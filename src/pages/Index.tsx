@@ -4,6 +4,7 @@ import ServicesSection from "@/components/ServicesSection";
 import CarePackages from "@/components/CarePackages";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import ChatbotWidget from "@/components/ChatbotWidget";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
@@ -13,6 +14,7 @@ const Index = () => (
     <CarePackages />
     <CTASection />
     <Footer />
+    <ChatbotWidget />
   </div>
 );
 
