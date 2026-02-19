@@ -35,7 +35,7 @@ const services = [
 ];
 
 const ServicesSection = () => (
-  <section id="services" className="py-20 md:py-28 bg-background">
+  <section id="services" className="py-24 md:py-32 bg-background relative">
     <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -44,27 +44,27 @@ const ServicesSection = () => (
         transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
-        <span className="text-sm font-semibold text-primary uppercase tracking-wider">What We Offer</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">Our Services</h2>
-        <p className="text-muted-foreground max-w-xl mx-auto">
+        <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">What We Offer</span>
+        <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mt-2 mb-5 tracking-tight">Our Services</h2>
+        <p className="text-muted-foreground max-w-xl mx-auto text-lg">
           Comprehensive healthcare solutions for patients and providers
         </p>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {services.map((service, i) => (
           <motion.div
             key={service.title}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.08 }}
-            className="group bg-card rounded-2xl p-7 shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50 hover:border-primary/20"
+            transition={{ duration: 0.4, delay: i * 0.06 }}
+            className="group relative bg-card rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-500 border border-border/50 hover:border-primary/20 hover:-translate-y-1"
           >
-            <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
-              <service.icon className="w-6 h-6 text-primary" />
+            <div className="w-14 h-14 rounded-2xl bg-primary/8 flex items-center justify-center mb-6 group-hover:bg-primary/15 transition-colors duration-300">
+              <service.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
             </div>
-            <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
+            <h3 className="text-lg font-bold text-foreground mb-2.5">{service.title}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
           </motion.div>
         ))}
