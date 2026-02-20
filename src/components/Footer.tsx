@@ -1,7 +1,7 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => (
-  <footer id="footer" className="bg-foreground text-primary-foreground/60 py-20">
+  <footer id="footer" className="bg-foreground text-primary-foreground/60 py-14">
     <div className="container">
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-14">
         <div>
