@@ -43,7 +43,7 @@ const packages = [
 ];
 
 const CarePackages = () => (
-  <section id="packages" className="py-24 md:py-32 bg-muted/40 relative">
+  <section id="packages" className="py-16 md:py-24 bg-muted/40 relative">
     <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,7 @@ const CarePackages = () => (
         <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">Tailored For You</span>
         <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mt-2 mb-5 tracking-tight">Care Packages</h2>
         <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-          Comprehensive healthcare packages designed for your specific needs
+          Bundled care plans tailored to your recovery, wellness, or new chapter in life.
         </p>
       </motion.div>
 

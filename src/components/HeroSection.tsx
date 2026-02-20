@@ -30,14 +30,13 @@ const HeroSection = () => (
             <span className="text-sm font-medium text-primary-foreground/90">Trusted Healthcare Platform</span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold text-primary-foreground leading-[1.05] mb-8 tracking-tight">
-            End-to-end
-            <span className="block bg-gradient-to-r from-primary-foreground to-primary-foreground/60 bg-clip-text text-transparent">Healthcare Management</span>
+          <h1 className="text-5xl md:text-7xl font-extrabold text-primary-foreground leading-[1.05] mb-6 tracking-tight">
+            Your Health,
+            <span className="block bg-gradient-to-r from-primary-foreground to-primary-foreground/60 bg-clip-text text-transparent">Simplified.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/70 max-w-lg mb-10 leading-relaxed font-body">
-            Connect with doctors, nursing services, and laboratories all in one place.
-            Our AI assistant Alex helps you find the perfect healthcare professional for your needs.
+            Doctors, nursing care, and lab services — all in one place. Let our AI assistant Alex match you with the right professional in seconds.
           </p>
 
           <div className="flex flex-wrap gap-4">

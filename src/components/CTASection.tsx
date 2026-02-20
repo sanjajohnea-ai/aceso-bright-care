@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 const CTASection = () => (
-  <section id="cta" className="py-24 md:py-32">
+  <section id="cta" className="py-16 md:py-24">
     <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -31,10 +31,10 @@ const CTASection = () => (
           </motion.div>
 
           <h2 className="text-3xl md:text-5xl font-extrabold text-primary-foreground mb-5 tracking-tight">
-            Ready to get started?
+            Take the first step.
           </h2>
           <p className="text-primary-foreground/70 max-w-lg mx-auto mb-10 text-lg leading-relaxed">
-            Join Aceso Health Solutions today and experience the future of healthcare management.
+            Better healthcare starts here. Sign up today and let Aceso handle the rest.
           </p>
           <Button variant="hero" size="lg" className="rounded-full px-10 gap-2 group">
             Get Started <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
