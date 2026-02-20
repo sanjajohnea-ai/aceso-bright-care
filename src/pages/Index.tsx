@@ -3,7 +3,6 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import CarePackages from "@/components/CarePackages";
 import MobileAppSection from "@/components/MobileAppSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/ChatbotWidget";
@@ -15,7 +14,6 @@ const Index = () => (
     <ServicesSection />
     <CarePackages />
     <MobileAppSection />
-    <TestimonialsSection />
     <CTASection />
     <Footer />
     <ChatbotWidget />
