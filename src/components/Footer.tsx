@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Download } from "lucide-react";
 
 const Footer = () => (
   <footer id="footer" className="bg-foreground text-primary-foreground/60 py-14">
@@ -8,9 +8,18 @@ const Footer = () => (
           <h3 className="font-display font-extrabold text-xl text-primary-foreground mb-4">
             <span className="text-primary">Aceso</span> Health
           </h3>
-          <p className="text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed mb-4">
             End-to-end healthcare management platform connecting patients with quality healthcare services across Kenya.
           </p>
+          <a
+            href="https://play.google.com/store"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground"
+          >
+            <Download className="w-4 h-4" />
+            Get it on Google Play
+          </a>
         </div>
 
         <div>
