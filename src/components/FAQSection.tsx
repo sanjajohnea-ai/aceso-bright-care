@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const faqs = [
+export const faqs = [
   {
     question: "How do I request for a consultation through Aceso Health?",
     answer: "It is simple to book a consultation through Aceso Health:\n1. Sign up on the app or website\n2. Select the specialist doctor that matches your requirements\n3. Pay the fees online through a secured payment gateway and schedule the consultation",
@@ -30,46 +30,37 @@ const faqs = [
   },
 ];
 
-const INITIAL_COUNT = 3;
-
-const FAQSection = () => {
-  const [showAll, setShowAll] = useState(false);
-  const visibleFaqs = showAll ? faqs : faqs.slice(0, INITIAL_COUNT);
-
-  return (
-    <section id="faq" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-3xl font-bold text-center text-foreground mb-2">
-          Frequently Asked Questions
-        </h2>
-        <p className="text-center text-muted-foreground mb-10">
-          Find answers to common questions about our services.
-        </p>
-        <Accordion type="single" collapsible className="w-full">
-          {visibleFaqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`}>
-              <AccordionTrigger className="text-left text-foreground">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground whitespace-pre-line">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-        <div className="flex justify-center mt-8">
-          <Button
-            variant="outline"
-            onClick={() => setShowAll(!showAll)}
-            className="gap-2"
-          >
-            {showAll ? "Show Less" : "Load More"}
-            {showAll ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-          </Button>
-        </div>
+const FAQSection = () => (
+  <section id="faq" className="py-20 bg-muted/30">
+    <div className="container mx-auto px-4 max-w-3xl">
+      <h2 className="text-3xl font-bold text-center text-foreground mb-2">
+        Frequently Asked Questions
+      </h2>
+      <p className="text-center text-muted-foreground mb-10">
+        Find answers to common questions about our services.
+      </p>
+      <Accordion type="single" collapsible className="w-full">
+        {faqs.map((faq, i) => (
+          <AccordionItem key={i} value={`item-${i}`}>
+            <AccordionTrigger className="text-left text-foreground">
+              {faq.question}
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground whitespace-pre-line">
+              {faq.answer}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+      <div className="flex justify-center mt-8">
+        <Button variant="outline" className="gap-2" asChild>
+          <Link to="/faq">
+            Load More
+            <ChevronDown className="h-4 w-4" />
+          </Link>
+        </Button>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default FAQSection;
