@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <section
       aria-label="Hero — Expert Medical Care"
-      className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden"
+      className="relative min-h-[65vh] md:min-h-[85vh] flex items-center overflow-hidden"
     >
       {/* Background image — lazy loaded with fade-in */}
       <div className="absolute inset-0">
