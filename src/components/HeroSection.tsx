@@ -17,7 +17,7 @@ const HeroSection = () => {
         <img
           src={heroImg}
           alt="Kenyan healthcare professionals caring for a patient in a modern clinic"
-          loading="lazy"
+          loading="eager"
           decoding="async"
           fetchPriority="high"
           onLoad={() => setImageLoaded(true)}

@@ -1,17 +1,20 @@
-import { useRef } from "react";
+import { useRef, lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import StepsSection from "@/components/StepsSection";
-import ServicesSection from "@/components/ServicesSection";
-import BenefitsStatsSection from "@/components/BenefitsStatsSection";
-import StatsSection from "@/components/StatsSection";
-import CarePackages from "@/components/CarePackages";
-import MobileAppSection from "@/components/MobileAppSection";
-import FAQSection from "@/components/FAQSection";
-import NewsletterSection from "@/components/NewsletterSection";
-import Footer from "@/components/Footer";
 import ChatbotWidget, { type ChatbotWidgetRef } from "@/components/ChatbotWidget";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const StepsSection = lazy(() => import("@/components/StepsSection"));
+const BenefitsStatsSection = lazy(() => import("@/components/BenefitsStatsSection"));
+const StatsSection = lazy(() => import("@/components/StatsSection"));
+const CarePackages = lazy(() => import("@/components/CarePackages"));
+const MobileAppSection = lazy(() => import("@/components/MobileAppSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const NewsletterSection = lazy(() => import("@/components/NewsletterSection"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+const SectionFallback = () => <div className="min-h-[200px]" />;
 
 const Index = () => {
   const chatRef = useRef<ChatbotWidgetRef>(null);
@@ -24,16 +27,20 @@ const Index = () => {
       <Navbar />
       <main id="main-content">
         <HeroSection />
-        <ServicesSection onOpenChat={() => chatRef.current?.open()} />
-        <StepsSection />
-        <MobileAppSection />
-        <BenefitsStatsSection />
-        <StatsSection />
-        <CarePackages />
-        <FAQSection />
-        <NewsletterSection />
+        <Suspense fallback={<SectionFallback />}>
+          <ServicesSection onOpenChat={() => chatRef.current?.open()} />
+          <StepsSection />
+          <MobileAppSection />
+          <BenefitsStatsSection />
+          <StatsSection />
+          <CarePackages />
+          <FAQSection />
+          <NewsletterSection />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
       <ChatbotWidget ref={chatRef} />
       <StickyMobileCTA />
     </div>
