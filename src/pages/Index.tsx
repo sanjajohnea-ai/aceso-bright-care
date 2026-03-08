@@ -7,7 +7,7 @@ import StickyMobileCTA from "@/components/StickyMobileCTA";
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const StepsSection = lazy(() => import("@/components/StepsSection"));
 const BenefitsStatsSection = lazy(() => import("@/components/BenefitsStatsSection"));
-
+const StatsSection = lazy(() => import("@/components/StatsSection"));
 const CarePackages = lazy(() => import("@/components/CarePackages"));
 const MobileAppSection = lazy(() => import("@/components/MobileAppSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
@@ -32,7 +32,7 @@ const Index = () => {
           <StepsSection />
           <MobileAppSection />
           <BenefitsStatsSection />
-          
+          <StatsSection />
           <CarePackages />
           <FAQSection />
           <NewsletterSection />
