@@ -12,7 +12,7 @@ const screens = [appScreen1, appScreen2, appScreen3, appScreen4];
 const steps = [
   {
     icon: UserCheck,
-    title: "Choose Your Doctor",
+    title: "Choose Your Healthcare Provider",
     description: "Browse verified specialists, read reviews, and pick the perfect match.",
   },
   {
