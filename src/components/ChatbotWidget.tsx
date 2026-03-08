@@ -106,7 +106,7 @@ const ChatbotWidget = forwardRef<ChatbotWidgetRef>((_, ref) => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-hero flex items-center justify-center hover:scale-105 transition-transform"
+            className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-hero flex items-center justify-center hover:scale-105 transition-transform"
             aria-label="Open AI assistant"
           >
             <MessageCircle className="w-6 h-6" />
