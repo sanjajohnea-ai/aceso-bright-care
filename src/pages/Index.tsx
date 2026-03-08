@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import StepsSection from "@/components/StepsSection";
 import ServicesSection from "@/components/ServicesSection";
 import BenefitsStatsSection from "@/components/BenefitsStatsSection";
+import StatsSection from "@/components/StatsSection";
 import CarePackages from "@/components/CarePackages";
 import MobileAppSection from "@/components/MobileAppSection";
 import FAQSection from "@/components/FAQSection";
@@ -22,6 +23,7 @@ const Index = () => {
       <ServicesSection onOpenChat={() => chatRef.current?.open()} />
       <StepsSection />
       <MobileAppSection />
+      <StatsSection />
       <BenefitsStatsSection />
       <CarePackages />
       <FAQSection />
