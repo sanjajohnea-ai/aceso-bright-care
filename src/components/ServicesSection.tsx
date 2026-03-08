@@ -7,8 +7,7 @@ const services = [
   {
     icon: Stethoscope,
     title: "Doctor Consultations",
-    description:
-      "Access verified specialists across 30+ disciplines. Book in-person visits or telemedicine consultations.",
+    description: "Access verified specialists across 30+ disciplines.",
     highlights: ["In-person & video calls", "30+ specialties", "Same-day appointments"],
     cta: "Book a Doctor",
     link: "/doctors",
@@ -16,8 +15,7 @@ const services = [
   {
     icon: Home,
     title: "Home Nursing",
-    description:
-      "Professional nurses come to you — from wound management and overnight care to medication administration.",
+    description: "Professional nurses come to you for personalised care.",
     highlights: ["Wound dressing & management", "Overnight care", "Medication administration"],
     featured: true,
     cta: "Book a Nurse",
@@ -26,8 +24,7 @@ const services = [
   {
     icon: FlaskConical,
     title: "Laboratory Services",
-    description:
-      "Convenient sample collection at home or walk-in lab visits. Accurate results delivered digitally.",
+    description: "Convenient sample collection and accurate digital results.",
     highlights: ["Home sample collection", "Digital results delivery", "Accredited partner labs"],
     cta: "Book a Lab Test",
     link: "/laboratory",
@@ -35,8 +32,7 @@ const services = [
   {
     icon: ShoppingBag,
     title: "Pharmacy Orders",
-    description:
-      "Order prescription and over-the-counter medication from our verified pharmacy network — delivered to your door.",
+    description: "Prescription and OTC medication delivered to your door.",
     highlights: ["Prescription & OTC medicines", "Doorstep delivery", "Verified pharmacy partners"],
     cta: "Order Medicine",
     link: "/pharmacy",
@@ -44,16 +40,14 @@ const services = [
   {
     icon: Bot,
     title: "AI Health Assistant",
-    description:
-      "Get instant specialist recommendations based on your symptoms and receive quick, personalized healthcare guidance.",
+    description: "Instant specialist recommendations based on your symptoms.",
     highlights: ["Symptom-based specialist matching", "Personalized recommendations"],
     cta: "Chat with Alex",
   },
   {
     icon: Pill,
     title: "Medication Tracking & Reminders",
-    description:
-      "Set personalized medication schedules, receive smart reminders, and track your adherence.",
+    description: "Smart schedules, reminders, and adherence tracking.",
     highlights: ["Smart dose reminders", "Adherence tracking", "Medication management"],
     badge: "Mobile App",
     cta: "Download App",
