@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Search, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-healthcare.jpg";
 
 const HeroSection = () => (
@@ -50,23 +50,6 @@ const HeroSection = () => (
       </motion.div>
     </div>
 
-    {/* Search bar floating at bottom */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.6 }}
-      className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 w-full max-w-xl px-4 md:px-6 z-10"
-    >
-      <div className="flex items-center bg-card rounded-full shadow-card-hover px-4 md:px-5 py-2.5 md:py-3 gap-2 md:gap-3">
-        <Search className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground shrink-0" />
-        <input
-          type="text"
-          placeholder="Search doctor, nurse, lab test..."
-          className="flex-1 bg-transparent text-xs md:text-sm text-foreground placeholder:text-muted-foreground outline-none font-body min-w-0"
-        />
-        <Button size="sm" className="rounded-full px-3 md:px-5 text-xs md:text-sm shrink-0">Search</Button>
-      </div>
-    </motion.div>
 
     <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent" />
   </section>

@@ -73,7 +73,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
         />
       </div>
       {service.badge && (
-        <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full">
+        <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full mt-1">
           <Smartphone className="w-3 h-3" />
           {service.badge}
         </span>
@@ -104,7 +104,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
 );
 
 const ServicesSection = ({ onOpenChat }: { onOpenChat?: () => void }) => (
-  <section id="core-services" className="py-12 md:py-24 bg-background">
+  <section id="core-services" className="py-12 md:py-20 bg-background">
     <div className="container px-5">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
