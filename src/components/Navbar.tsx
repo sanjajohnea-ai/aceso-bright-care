@@ -15,6 +15,11 @@ const servicesMenu = {
     { label: "Remote Admin Support", href: "#services" },
     { label: "Credentialing Services", href: "#services" },
   ],
+  hospitals: [
+    { label: "Hospital Management Systems", href: "#services" },
+    { label: "Staff Scheduling", href: "#services" },
+    { label: "Patient Flow Optimization", href: "#services" },
+  ],
 };
 
 const navLinks = [
