@@ -23,8 +23,8 @@ const Footer = () => (
         </div>
 
         <div>
-          <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-[10px] md:text-xs uppercase tracking-[0.2em]">Quick Links</h4>
-          <ul className="space-y-2.5 md:space-y-3 text-xs md:text-sm">
+          <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-xs uppercase tracking-[0.2em]">Quick Links</h4>
+          <ul className="space-y-2.5 md:space-y-3 text-sm">
             <li><a href="#" className="hover:text-primary-foreground transition-colors duration-200">About Us</a></li>
             <li><a href="#services" className="hover:text-primary-foreground transition-colors duration-200">Services</a></li>
             <li><a href="#packages" className="hover:text-primary-foreground transition-colors duration-200">Care Packages</a></li>
