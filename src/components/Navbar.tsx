@@ -108,14 +108,19 @@ const Navbar = () => {
                       {item.label}
                     </a>
                   ))}
-                  <div className="border-t border-border mx-3 my-1" />
-                  <a
-                    href="#services"
-                    onClick={() => setServicesOpen(false)}
-                    className="block px-4 py-2.5 text-sm font-medium text-primary hover:bg-muted/60 transition-colors"
-                  >
-                    Hospital Solutions
-                  </a>
+                  <div className="px-4 pt-3 pb-1">
+                    <span className="text-xs font-bold text-foreground uppercase tracking-wider">Hospital Solutions</span>
+                  </div>
+                  {servicesMenu.hospitals.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setServicesOpen(false)}
+                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
                 </motion.div>
               )}
             </AnimatePresence>
