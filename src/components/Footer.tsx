@@ -10,24 +10,12 @@ const Footer = () => (
           <p className="text-xs md:text-sm leading-relaxed mb-4">
             End-to-end healthcare management platform connecting patients with quality healthcare services across Kenya.
           </p>
-          <div className="flex flex-col sm:flex-row items-start gap-2">
-            <a
-              href="https://play.google.com/store"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-xs md:text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground"
-            >
-              <Download className="w-3.5 md:w-4 h-3.5 md:h-4" />
-              Google Play
+          <div className="flex flex-col sm:flex-row items-start gap-3">
+            <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <img src="/images/google-play-badge.svg" alt="Get it on Google Play" className="h-10" />
             </a>
-            <a
-              href="https://apps.apple.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-xs md:text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground"
-            >
-              <Download className="w-3.5 md:w-4 h-3.5 md:h-4" />
-              App Store
+            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <img src="/images/app-store-badge.svg" alt="Download on the App Store" className="h-10" />
             </a>
           </div>
           <div className="flex items-center gap-3 mt-4">
