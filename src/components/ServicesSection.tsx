@@ -61,6 +61,13 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
         : "border-border/50 shadow-card"
     }`}
   >
+    {service.badge && (
+      <span className="absolute top-4 right-4 md:top-6 md:right-6 inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full">
+        <Smartphone className="w-3 h-3" />
+        {service.badge}
+      </span>
+    )}
+
     <div
       className={`w-12 md:w-14 h-12 md:h-14 rounded-2xl flex items-center justify-center mb-4 md:mb-6 ${
         service.featured ? "bg-accent/10" : "bg-primary/8"
@@ -72,12 +79,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
       />
     </div>
 
-    <div className="flex items-center gap-2 mb-2 md:mb-3">
-      <h3 className="text-lg md:text-xl font-bold text-foreground">{service.title}</h3>
-      {service.badge && (
-        <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full">
-          <Smartphone className="w-3 h-3" />
-          {service.badge}
+    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3">{service.title}</h3>
         </span>
       )}
     </div>
