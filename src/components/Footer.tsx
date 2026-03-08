@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Download } from "lucide-react";
+import { Mail, Phone, MapPin, Download, Facebook, Linkedin } from "lucide-react";
 import acesoLogo from "@/assets/aceso-logo.png";
 
 const Footer = () => (
@@ -19,6 +19,14 @@ const Footer = () => (
             <Download className="w-3.5 md:w-4 h-3.5 md:h-4" />
             Get it on Google Play
           </a>
+          <div className="flex items-center gap-3 mt-4">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground">
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground">
+              <Linkedin className="w-4 h-4" />
+            </a>
+          </div>
         </div>
 
         <div>
