@@ -84,7 +84,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
         />
       </div>
       {service.badge && (
-        <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full mt-1">
+        <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full mt-1">
           <Smartphone className="w-3 h-3" />
           {service.badge}
         </span>
@@ -92,7 +92,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
     </div>
 
     <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3">{service.title}</h3>
-    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-4 md:mb-6">{service.description}</p>
+    <p className="text-sm text-muted-foreground leading-relaxed mb-4 md:mb-6">{service.description}</p>
 
     <ul className="space-y-2 md:space-y-2.5 mb-6 md:mb-8">
       {service.highlights.map((h) => (
