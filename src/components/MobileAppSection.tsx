@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import appScreen1 from "@/assets/mobile-app-scheduling.png";
-import appScreen2 from "@/assets/app-screen-doctors.png";
-import appScreen3 from "@/assets/app-screen-booking.png";
-import appScreen4 from "@/assets/app-screen-confirmation.png";
+import appScreenHome from "@/assets/app-screen-home.png";
+import appScreenDoctor from "@/assets/app-screen-doctors.png";
+import appScreenBooking from "@/assets/app-screen-booking.png";
+import appScreenConfirmation from "@/assets/app-screen-confirmation.png";
+import appScreenAppointments from "@/assets/app-screen-appointments.png";
 
-const screens = [appScreen1, appScreen2, appScreen3, appScreen4];
+const screens = [appScreenHome, appScreenDoctor, appScreenBooking, appScreenConfirmation, appScreenAppointments];
 
 const MobileAppSection = () => {
   const [currentScreen, setCurrentScreen] = useState(0);
