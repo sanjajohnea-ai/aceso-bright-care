@@ -20,10 +20,10 @@ const Footer = () => (
             Get it on Google Play
           </a>
           <div className="flex items-center gap-3 mt-4">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-[#1877F2]/20 border border-primary-foreground/10 transition-colors duration-200 text-[#1877F2]">
               <Facebook className="w-4 h-4" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-[#0A66C2]/20 border border-primary-foreground/10 transition-colors duration-200 text-[#0A66C2]">
               <Linkedin className="w-4 h-4" />
             </a>
           </div>
