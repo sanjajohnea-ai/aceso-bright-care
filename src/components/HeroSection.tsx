@@ -8,7 +8,7 @@ const HeroSection = () => (
     {/* Background image */}
     <div className="absolute inset-0">
       <img src={heroImg} alt="Healthcare professionals" className="w-full h-full object-cover scale-105" />
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/40" />
     </div>
 
     <div className="container relative z-10 pt-24 pb-28 md:pt-40 md:pb-28 px-5">
@@ -51,7 +51,7 @@ const HeroSection = () => (
     </div>
 
 
-    <div className="absolute bottom-0 left-0 right-0 h-16 md:h-20 bg-gradient-to-t from-background to-transparent" />
+    <div className="absolute bottom-0 left-0 right-0 h-16 md:h-20 bg-background" />
   </section>
 );
 
