@@ -2,20 +2,20 @@ import { motion } from "framer-motion";
 import { Stethoscope, Home, FlaskConical, Pill, ShoppingBag, ArrowRight, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const coreServices = [
+const services = [
   {
     icon: Stethoscope,
     title: "Doctor Consultations",
     description:
       "Access verified specialists across 30+ disciplines. Book in-person visits or telemedicine consultations.",
-    highlights: ["In-person & video calls", "30+ specialties", "Prescription delivery"],
+    highlights: ["In-person & video calls", "30+ specialties", "Same-day appointments"],
   },
   {
     icon: Home,
     title: "Home Nursing",
     description:
-      "Professional nurses come to you — from post-surgery recovery and wound care to elderly support.",
-    highlights: ["Post-surgery care", "Elderly & palliative care", "Chronic disease management"],
+      "Professional nurses come to you — from wound management and overnight care to medication administration.",
+    highlights: ["Wound dressing & management", "Overnight care", "Medication administration"],
     featured: true,
   },
   {
@@ -25,15 +25,19 @@ const coreServices = [
       "Convenient sample collection at home or walk-in lab visits. Accurate results delivered digitally.",
     highlights: ["Home sample collection", "Digital results delivery", "Accredited partner labs"],
   },
-];
-
-const additionalServices = [
   {
     icon: ShoppingBag,
     title: "Pharmacy Orders",
     description:
       "Order prescription and over-the-counter medication from our verified pharmacy network — delivered to your door.",
     highlights: ["Prescription & OTC medicines", "Doorstep delivery", "Verified pharmacy partners"],
+  },
+  {
+    icon: Bot,
+    title: "AI Health Assistant",
+    description:
+      "Get instant specialist recommendations based on your symptoms and receive quick, personalized healthcare guidance.",
+    highlights: ["Symptom-based specialist matching", "Personalized recommendations", "24/7 availability"],
   },
   {
     icon: Pill,
