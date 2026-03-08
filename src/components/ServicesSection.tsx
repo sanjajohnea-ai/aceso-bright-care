@@ -37,7 +37,7 @@ const services = [
     title: "AI Health Assistant",
     description:
       "Get instant specialist recommendations based on your symptoms and receive quick, personalized healthcare guidance.",
-    highlights: ["Symptom-based specialist matching", "Personalized recommendations", "24/7 availability"],
+    highlights: ["Symptom-based specialist matching", "Personalized recommendations"],
   },
   {
     icon: Pill,
