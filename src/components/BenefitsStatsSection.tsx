@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import heroImg from "@/assets/hero-healthcare.jpg";
+import nurseMotherImg from "@/assets/nurse-mother-newborn.jpg";
 
 const benefits = [
   "Book consultations, view lab results & manage prescriptions — anytime, anywhere.",
@@ -65,8 +65,8 @@ const BenefitsStatsSection = () => (
         >
           <div className="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl" />
           <img
-            src={heroImg}
-            alt="Healthcare professionals providing patient care"
+            src={nurseMotherImg}
+            alt="Nurse caring for a mother with newborn at home"
             className="relative rounded-2xl shadow-card-hover w-full object-cover aspect-[4/3]"
           />
         </motion.div>
