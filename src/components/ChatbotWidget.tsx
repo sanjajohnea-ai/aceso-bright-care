@@ -16,6 +16,8 @@ const ChatbotWidget = forwardRef<ChatbotWidgetRef>((_, ref) => {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  useImperativeHandle(ref, () => ({ open: () => setOpen(true) }));
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages]);
