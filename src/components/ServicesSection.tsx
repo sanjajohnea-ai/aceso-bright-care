@@ -123,17 +123,9 @@ const ServicesSection = () => (
         </p>
       </motion.div>
 
-      {/* Row 1: 3 core services */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
-        {coreServices.map((service, i) => (
+        {services.map((service, i) => (
           <ServiceCard key={service.title} service={service} index={i} />
-        ))}
-      </div>
-
-      {/* Row 2: 2 additional services */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto mt-5 md:mt-6">
-        {additionalServices.map((service, i) => (
-          <ServiceCard key={service.title} service={service} index={i + 3} />
         ))}
       </div>
     </div>
