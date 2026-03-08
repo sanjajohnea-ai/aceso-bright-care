@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Download, Facebook, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin } from "lucide-react";
 import acesoLogo from "@/assets/aceso-logo.png";
 
 const Footer = () => (
