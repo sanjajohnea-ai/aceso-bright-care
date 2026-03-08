@@ -2,30 +2,30 @@ import { motion } from "framer-motion";
 import heroImg from "@/assets/hero-healthcare.jpg";
 
 const BenefitsSection = () => (
-  <section className="py-16 md:py-24 bg-background">
-    <div className="container">
+  <section className="py-12 md:py-24 bg-background">
+    <div className="container px-5">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-10"
+        className="mb-8 md:mb-10"
       >
-        <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">
+        <span className="inline-block text-[10px] md:text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4">
           Why Aceso
         </span>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight mb-4">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-foreground tracking-tight mb-3 md:mb-4">
           Benefits for the Patients
         </h2>
       </motion.div>
 
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="space-y-5 text-muted-foreground leading-relaxed"
+          className="space-y-4 md:space-y-5 text-muted-foreground leading-relaxed text-sm md:text-base"
         >
           <p>
             <strong className="text-foreground">Convenience at your fingertips.</strong> Skip the long queues and commute. Book consultations, view lab results, and manage prescriptions from your phone or computer — anytime, anywhere.

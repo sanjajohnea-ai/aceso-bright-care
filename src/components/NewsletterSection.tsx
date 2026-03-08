@@ -3,28 +3,28 @@ import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 
 const NewsletterSection = () => (
-  <section className="py-14" style={{ background: "var(--gradient-primary)" }}>
-    <div className="container max-w-2xl text-center">
+  <section className="py-10 md:py-14" style={{ background: "var(--gradient-primary)" }}>
+    <div className="container max-w-2xl text-center px-5">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl md:text-3xl font-extrabold text-primary-foreground mb-3 tracking-tight">
+        <h2 className="text-xl md:text-3xl font-extrabold text-primary-foreground mb-2 md:mb-3 tracking-tight">
           Subscribe to our Newsletter
         </h2>
-        <p className="text-primary-foreground/70 mb-8 text-sm">
+        <p className="text-primary-foreground/70 mb-6 md:mb-8 text-xs md:text-sm">
           Stay updated with health tips, new specialists, and platform updates.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
           <input
             type="email"
             placeholder="Enter your email address"
-            className="flex-1 px-5 py-3 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 text-sm outline-none focus:border-primary-foreground/40 transition-colors font-body"
+            className="flex-1 px-4 md:px-5 py-2.5 md:py-3 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 text-xs md:text-sm outline-none focus:border-primary-foreground/40 transition-colors font-body"
           />
-          <Button variant="hero" className="rounded-full px-6 gap-2">
-            Subscribe <Send className="w-4 h-4" />
+          <Button variant="hero" className="rounded-full px-5 md:px-6 gap-2 text-xs md:text-sm">
+            Subscribe <Send className="w-3.5 md:w-4 h-3.5 md:h-4" />
           </Button>
         </div>
       </motion.div>
