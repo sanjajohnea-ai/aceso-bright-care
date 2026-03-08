@@ -69,7 +69,7 @@ const MobileAppSection = () => (
           className="order-1 lg:order-2"
         >
           <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">
-            Mobile Experience
+            How It Works
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-5 tracking-tight">
             Book a Doctor in 3 Simple Steps
