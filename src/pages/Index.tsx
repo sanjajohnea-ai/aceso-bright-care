@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import StepsSection from "@/components/StepsSection";
 import ServicesSection from "@/components/ServicesSection";
 import BenefitsStatsSection from "@/components/BenefitsStatsSection";
 import CarePackages from "@/components/CarePackages";
@@ -18,6 +19,7 @@ const Index = () => {
     <div className="min-h-screen bg-background pb-16 md:pb-0">
       <Navbar />
       <HeroSection />
+      <StepsSection />
       <ServicesSection onOpenChat={() => chatRef.current?.open()} />
       <BenefitsStatsSection />
       <CarePackages />
