@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "15+", label: "Specialist Doctors" },
+  { value: "15+", label: "Healthcare Providers" },
   { value: "34+", label: "Consultations Completed" },
   { value: "98%", label: "Patient Satisfaction" },
   { value: "24/7", label: "Support Available" },
