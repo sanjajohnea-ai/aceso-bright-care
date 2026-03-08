@@ -71,28 +71,6 @@ const BenefitsStatsSection = () => (
         </motion.div>
       </div>
 
-      {/* Stats strip */}
-      <div className="rounded-2xl py-8 md:py-10 px-6" style={{ background: "var(--gradient-primary)" }}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-3xl md:text-5xl font-extrabold text-primary-foreground mb-1">
-                {stat.value}
-              </div>
-              <div className="text-xs md:text-sm text-primary-foreground/70 font-medium">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
     </div>
   </section>
 );
