@@ -33,7 +33,7 @@ export const faqs = [
 const FAQSection = () => (
   <section id="faq" className="py-12 md:py-20 bg-muted/30">
     <div className="container px-5 max-w-3xl mx-auto">
-      <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-2">
+      <h2 className="text-2xl md:text-4xl font-extrabold text-center text-foreground mb-2 tracking-tight">
         Frequently Asked Questions
       </h2>
       <p className="text-center text-muted-foreground mb-8 md:mb-10 text-sm md:text-base">
