@@ -225,6 +225,8 @@ const ChatbotWidget = forwardRef<ChatbotWidgetRef>((_, ref) => {
       </AnimatePresence>
     </>
   );
-};
+});
+
+ChatbotWidget.displayName = "ChatbotWidget";
 
 export default ChatbotWidget;
