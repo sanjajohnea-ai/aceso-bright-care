@@ -31,7 +31,10 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <Button size="sm" className="ml-4 rounded-full px-6">Get Started</Button>
+          <Button variant="outline" size="sm" className="ml-2 rounded-full px-5" asChild>
+            <a href="/sign-in">Sign In</a>
+          </Button>
+          <Button size="sm" className="ml-2 rounded-full px-6">Get Started</Button>
         </div>
 
         {/* Mobile toggle */}
