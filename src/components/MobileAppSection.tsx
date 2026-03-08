@@ -112,7 +112,7 @@ const MobileAppSection = () => {
               Book an Appointment in 3 Simple Steps
             </h2>
             <p className="text-muted-foreground text-sm md:text-lg mb-8 md:mb-10 max-w-md leading-relaxed">
-              Our mobile app makes scheduling appointments effortless. Find the right doctor, pick a time, and you're all set.
+              Our mobile app makes scheduling appointments effortless. Find the right healthcare provider, pick a time, and you're all set.
             </p>
 
             <div className="space-y-5 md:space-y-6 mb-8 md:mb-10">
