@@ -36,7 +36,7 @@ const HeroSection = () => (
         </h1>
 
         <p className="text-lg md:text-xl text-primary-foreground/70 max-w-lg mb-10 leading-relaxed font-body">
-          Access top doctors, nurses, and lab services across Kenya. Let our AI assistant Alex match you with the right professional in seconds.
+          Access top doctors, home nursing, and lab services across Kenya. Let our AI assistant Alex match you with the right care in seconds.
         </p>
 
         <div className="flex flex-wrap gap-4">
