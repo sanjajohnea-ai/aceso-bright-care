@@ -95,8 +95,9 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
     <Button
       variant={service.featured ? "hero" : "outline"}
       className="w-full rounded-xl gap-2 group text-sm"
+      onClick={onAction}
     >
-      {service.badge ? "Download App" : "Learn More"}
+      {service.badge ? "Download App" : service.title === "AI Health Assistant" ? "Chat with Alex" : "Learn More"}
       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
     </Button>
   </motion.div>
