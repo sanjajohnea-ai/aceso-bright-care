@@ -17,8 +17,6 @@ const servicesMenu = {
   ],
   hospitals: [
     { label: "Hospital Management Systems", href: "#services" },
-    { label: "Staff Scheduling", href: "#services" },
-    { label: "Patient Flow Optimization", href: "#services" },
   ],
 };
 
