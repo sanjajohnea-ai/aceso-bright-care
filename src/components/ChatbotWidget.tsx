@@ -122,7 +122,7 @@ const ChatbotWidget = forwardRef<ChatbotWidgetRef>((_, ref) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[520px] max-h-[calc(100vh-3rem)] bg-card rounded-2xl shadow-card-hover border border-border/60 flex flex-col overflow-hidden"
+            className="fixed bottom-0 right-0 md:bottom-6 md:right-6 z-50 w-full md:w-[380px] md:max-w-[calc(100vw-2rem)] h-[100dvh] md:h-[520px] md:max-h-[calc(100vh-3rem)] bg-card md:rounded-2xl shadow-card-hover border-0 md:border border-border/60 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-border/50" style={{ background: "var(--gradient-primary)" }}>

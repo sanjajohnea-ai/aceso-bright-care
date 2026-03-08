@@ -109,7 +109,7 @@ const MobileAppSection = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-full px-6 md:px-8 text-sm md:text-base"
+                className="rounded-full px-6 md:px-8 text-sm md:text-base w-full sm:w-auto"
                 asChild
               >
                 <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer">
