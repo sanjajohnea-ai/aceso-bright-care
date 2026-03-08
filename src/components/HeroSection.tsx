@@ -33,17 +33,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="max-w-2xl"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-block text-[10px] md:text-xs font-bold text-accent uppercase tracking-[0.2em] mb-3 md:mb-4"
-            aria-label="Number one healthcare platform"
-          >
-            #1 Healthcare Platform
-          </motion.span>
-
-          <h1 className="text-3xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground leading-[1.1] mb-4 md:mb-6 tracking-tight">
+          <h1 className="text-2xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-[1.1] mb-4 md:mb-6 tracking-tight">
             Expert Medical Care.
             <span className="block bg-gradient-to-r from-primary-foreground to-primary-foreground/60 bg-clip-text text-transparent">
               Anytime, Anywhere.
