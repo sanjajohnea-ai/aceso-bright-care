@@ -31,28 +31,28 @@ export const faqs = [
 ];
 
 const FAQSection = () => (
-  <section id="faq" className="py-20 bg-muted/30">
-    <div className="container mx-auto px-4 max-w-3xl">
-      <h2 className="text-3xl font-bold text-center text-foreground mb-2">
+  <section id="faq" className="py-12 md:py-20 bg-muted/30">
+    <div className="container mx-auto px-5 max-w-3xl">
+      <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-2">
         Frequently Asked Questions
       </h2>
-      <p className="text-center text-muted-foreground mb-10">
+      <p className="text-center text-muted-foreground mb-8 md:mb-10 text-sm md:text-base">
         Find answers to common questions about our services.
       </p>
       <Accordion type="single" collapsible className="w-full">
         {faqs.map((faq, i) => (
           <AccordionItem key={i} value={`item-${i}`}>
-            <AccordionTrigger className="text-left text-foreground">
+            <AccordionTrigger className="text-left text-foreground text-sm md:text-base">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground whitespace-pre-line">
+            <AccordionContent className="text-muted-foreground whitespace-pre-line text-xs md:text-sm">
               {faq.answer}
             </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
-      <div className="flex justify-center mt-8">
-        <Button variant="outline" className="gap-2" asChild>
+      <div className="flex justify-center mt-6 md:mt-8">
+        <Button variant="outline" className="gap-2 text-sm" asChild>
           <Link to="/faq">
             Load More
             <ChevronDown className="h-4 w-4" />

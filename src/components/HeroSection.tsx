@@ -4,15 +4,14 @@ import { Search, ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-healthcare.jpg";
 
 const HeroSection = () => (
-  <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+  <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden">
     {/* Background image */}
     <div className="absolute inset-0">
       <img src={heroImg} alt="Healthcare professionals" className="w-full h-full object-cover scale-105" />
       <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
-      
     </div>
 
-    <div className="container relative z-10 pt-32 pb-20 md:pt-40 md:pb-28">
+    <div className="container relative z-10 pt-24 pb-28 md:pt-40 md:pb-28 px-5">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -23,28 +22,28 @@ const HeroSection = () => (
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-block text-xs font-bold text-accent uppercase tracking-[0.2em] mb-4"
+          className="inline-block text-[10px] md:text-xs font-bold text-accent uppercase tracking-[0.2em] mb-3 md:mb-4"
         >
           #1 Healthcare Platform
         </motion.span>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground leading-[1.08] mb-6 tracking-tight">
+        <h1 className="text-3xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground leading-[1.1] mb-4 md:mb-6 tracking-tight">
           Expert Medical Care.
           <span className="block bg-gradient-to-r from-primary-foreground to-primary-foreground/60 bg-clip-text text-transparent">
             Anytime, Anywhere.
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-primary-foreground/70 max-w-lg mb-10 leading-relaxed font-body">
+        <p className="text-base md:text-xl text-primary-foreground/70 max-w-lg mb-7 md:mb-10 leading-relaxed font-body">
           Access top doctors, home nursing, and lab services across Kenya. Let our AI assistant Alex match you with the right care in seconds.
         </p>
 
-        <div className="flex flex-wrap gap-4">
-          <Button variant="hero" size="lg" className="rounded-full px-8 gap-2 group">
+        <div className="flex flex-wrap gap-3 md:gap-4">
+          <Button variant="hero" size="lg" className="rounded-full px-6 md:px-8 gap-2 group text-sm md:text-base">
             Get Started
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Button>
-          <Button variant="hero-outline" size="lg" className="rounded-full px-8">
+          <Button variant="hero-outline" size="lg" className="rounded-full px-6 md:px-8 text-sm md:text-base">
             Learn More
           </Button>
         </div>
@@ -56,20 +55,20 @@ const HeroSection = () => (
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.6 }}
-      className="absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-xl px-6 z-10"
+      className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 w-full max-w-xl px-4 md:px-6 z-10"
     >
-      <div className="flex items-center bg-card rounded-full shadow-card-hover px-5 py-3 gap-3">
-        <Search className="w-5 h-5 text-muted-foreground shrink-0" />
+      <div className="flex items-center bg-card rounded-full shadow-card-hover px-4 md:px-5 py-2.5 md:py-3 gap-2 md:gap-3">
+        <Search className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground shrink-0" />
         <input
           type="text"
-          placeholder="Search for a doctor, nurse, lab test, or service..."
-          className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none font-body"
+          placeholder="Search doctor, nurse, lab test..."
+          className="flex-1 bg-transparent text-xs md:text-sm text-foreground placeholder:text-muted-foreground outline-none font-body min-w-0"
         />
-        <Button size="sm" className="rounded-full px-5">Search</Button>
+        <Button size="sm" className="rounded-full px-3 md:px-5 text-xs md:text-sm shrink-0">Search</Button>
       </div>
     </motion.div>
 
-    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+    <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent" />
   </section>
 );
 
