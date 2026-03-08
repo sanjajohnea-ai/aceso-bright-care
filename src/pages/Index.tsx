@@ -23,8 +23,8 @@ const Index = () => {
       <ServicesSection onOpenChat={() => chatRef.current?.open()} />
       <StepsSection />
       <MobileAppSection />
-      <StatsSection />
       <BenefitsStatsSection />
+      <StatsSection />
       <CarePackages />
       <FAQSection />
       <NewsletterSection />
