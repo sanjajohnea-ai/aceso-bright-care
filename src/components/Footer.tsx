@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-14">
         <div className="col-span-2 lg:col-span-1">
           <img src={acesoLogo} alt="Aceso Health Solutions" className="h-14 w-auto object-cover object-top mb-3 md:mb-4 brightness-0 invert" />
-          <p className="text-xs md:text-sm leading-relaxed mb-4">
+          <p className="text-sm leading-relaxed mb-4">
             End-to-end healthcare management platform connecting patients with quality healthcare services across Kenya.
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-3">
