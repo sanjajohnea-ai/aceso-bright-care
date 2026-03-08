@@ -5,8 +5,8 @@ const steps = [
   {
     icon: UserCheck,
     number: "01",
-    title: "Choose Your Doctor",
-    description: "Browse verified specialists, read reviews, and pick the perfect match for your medical needs.",
+    title: "Choose Your Healthcare Provider",
+    description: "Browse verified healthcare providers, read reviews, and pick the perfect match for your medical needs.",
   },
   {
     icon: CalendarCheck,
