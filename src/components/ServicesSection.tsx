@@ -49,7 +49,7 @@ const services = [
   },
 ];
 
-const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => (
+const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]; index: number; onAction?: () => void }) => (
   <motion.div
     initial={{ opacity: 0, y: 24 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -95,14 +95,15 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
     <Button
       variant={service.featured ? "hero" : "outline"}
       className="w-full rounded-xl gap-2 group text-sm"
+      onClick={onAction}
     >
-      {service.badge ? "Download App" : "Learn More"}
+      {service.badge ? "Download App" : service.title === "AI Health Assistant" ? "Chat with Alex" : "Learn More"}
       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
     </Button>
   </motion.div>
 );
 
-const ServicesSection = () => (
+const ServicesSection = ({ onOpenChat }: { onOpenChat?: () => void }) => (
   <section id="core-services" className="py-12 md:py-24 bg-background">
     <div className="container px-5">
       <motion.div
@@ -125,7 +126,12 @@ const ServicesSection = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
         {services.map((service, i) => (
-          <ServiceCard key={service.title} service={service} index={i} />
+          <ServiceCard
+            key={service.title}
+            service={service}
+            index={i}
+            onAction={service.title === "AI Health Assistant" ? onOpenChat : undefined}
+          />
         ))}
       </div>
     </div>

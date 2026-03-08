@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
@@ -7,12 +7,16 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
-const ChatbotWidget = () => {
+export type ChatbotWidgetRef = { open: () => void };
+
+const ChatbotWidget = forwardRef<ChatbotWidgetRef>((_, ref) => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => ({ open: () => setOpen(true) }));
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -221,6 +225,8 @@ const ChatbotWidget = () => {
       </AnimatePresence>
     </>
   );
-};
+});
+
+ChatbotWidget.displayName = "ChatbotWidget";
 
 export default ChatbotWidget;
