@@ -7,7 +7,7 @@ const benefits = [
   "Every professional is government-registered and thoroughly vetted.",
   "End-to-end encrypted medical records and consultations.",
   "No hidden fees — clear breakdowns for every service.",
-  "Compliant with Kenya's Data Protection Act & international laws.",
+  "Compliant with Kenya's Data Protection Act & relevant laws.",
 ];
 
 
