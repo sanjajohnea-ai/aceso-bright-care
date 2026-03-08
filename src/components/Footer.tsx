@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Download } from "lucide-react";
+import acesoLogo from "@/assets/aceso-logo.png";
 
 const Footer = () => (
   <footer id="footer" className="bg-foreground text-primary-foreground/60 py-10 md:py-14">
