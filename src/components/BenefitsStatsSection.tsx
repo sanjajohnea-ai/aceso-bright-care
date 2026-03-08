@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import heroImg from "@/assets/hero-healthcare.jpg";
+import nurseMotherImg from "@/assets/nurse-mother-newborn.jpg";
 
 const benefits = [
   "Book consultations, view lab results & manage prescriptions — anytime, anywhere.",
