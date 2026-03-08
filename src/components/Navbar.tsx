@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import acesoLogo from "@/assets/aceso-logo.png";
 
 const servicesMenu = {
   patients: [
@@ -44,8 +45,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b-0">
       <div className="container flex items-center justify-between h-[72px]">
-        <a href="#" className="font-display font-extrabold text-xl tracking-tight text-foreground">
-          <span className="text-primary">Aceso</span> Health
+        <a href="#" className="flex items-center">
+          <img src={acesoLogo} alt="Aceso Health Solutions" className="h-10 w-auto" />
         </a>
 
         {/* Desktop */}
