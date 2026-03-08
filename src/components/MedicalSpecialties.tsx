@@ -39,7 +39,7 @@ const MedicalSpecialties = () => (
           </h2>
         </div>
         <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
-          We partner with specialists across all major disciplines so you always find the right doctor.
+          We partner with specialists, nurses, and accredited labs across all major disciplines so you always find the right care.
         </p>
       </motion.div>
 

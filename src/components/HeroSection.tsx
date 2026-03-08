@@ -36,7 +36,7 @@ const HeroSection = () => (
         </h1>
 
         <p className="text-lg md:text-xl text-primary-foreground/70 max-w-lg mb-10 leading-relaxed font-body">
-          Access top doctors, nurses, and lab services across Kenya. Let our AI assistant Alex match you with the right professional in seconds.
+          Access top doctors, home nursing, and lab services across Kenya. Let our AI assistant Alex match you with the right care in seconds.
         </p>
 
         <div className="flex flex-wrap gap-4">
@@ -62,7 +62,7 @@ const HeroSection = () => (
         <Search className="w-5 h-5 text-muted-foreground shrink-0" />
         <input
           type="text"
-          placeholder="Search for a doctor, specialty, or service..."
+          placeholder="Search for a doctor, nurse, lab test, or service..."
           className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none font-body"
         />
         <Button size="sm" className="rounded-full px-5">Search</Button>
