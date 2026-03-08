@@ -32,7 +32,7 @@ const Index = () => {
           <StepsSection />
           <MobileAppSection />
           <BenefitsStatsSection />
-          <StatsSection />
+          
           <CarePackages />
           <FAQSection />
           <NewsletterSection />
