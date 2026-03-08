@@ -44,7 +44,7 @@ const services = [
     title: "Medication Tracking & Reminders",
     description:
       "Set personalized medication schedules, receive smart reminders, and track your adherence.",
-    highlights: ["Smart dose reminders", "Adherence tracking", "Family medication management"],
+    highlights: ["Smart dose reminders", "Adherence tracking", "Medication management"],
     badge: "Mobile App",
   },
 ];
