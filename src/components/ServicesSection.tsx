@@ -49,7 +49,7 @@ const services = [
   },
 ];
 
-const ServiceCard = ({ service, index }: { service: typeof coreServices[0] & { badge?: string }; index: number }) => (
+const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 24 }}
     whileInView={{ opacity: 1, y: 0 }}
