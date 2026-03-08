@@ -1,5 +1,15 @@
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 import heroImg from "@/assets/hero-healthcare.jpg";
+
+const benefits = [
+  "Book consultations, view lab results & manage prescriptions — anytime, anywhere.",
+  "Every professional is government-registered and thoroughly vetted.",
+  "Bundled care plans for recovery, maternity & wellness at transparent pricing.",
+  "End-to-end encrypted medical records and consultations.",
+  "No hidden fees — clear breakdowns for every service.",
+  "Compliant with Kenya's Data Protection Act & international laws.",
+];
 
 const BenefitsSection = () => (
   <section className="py-12 md:py-24 bg-background">
@@ -15,37 +25,28 @@ const BenefitsSection = () => (
           Why Aceso
         </span>
         <h2 className="text-2xl md:text-4xl font-extrabold text-foreground tracking-tight mb-3 md:mb-4">
-          Benefits for the Patients
+          Benefits for Patients
         </h2>
       </motion.div>
 
       <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="space-y-4 md:space-y-5 text-muted-foreground leading-relaxed text-sm md:text-base"
-        >
-          <p>
-            <strong className="text-foreground">Convenience at your fingertips.</strong> Skip the long queues and commute. Book consultations, view lab results, and manage prescriptions from your phone or computer — anytime, anywhere.
-          </p>
-          <p>
-            <strong className="text-foreground">Trusted professionals.</strong> Every doctor, nurse, and lab technician on our platform is government-registered and thoroughly vetted. You're always in safe hands.
-          </p>
-          <p>
-            <strong className="text-foreground">Affordable care packages.</strong> Choose from bundled care plans designed for post-surgery recovery, maternity support, or annual wellness — all at transparent pricing.
-          </p>
-          <p>
-            <strong className="text-foreground">End-to-end encrypted records.</strong> Your medical records and consultations are protected with end-to-end encryption, ensuring complete privacy and confidentiality.
-          </p>
-          <p>
-            <strong className="text-foreground">Transparent pricing.</strong> No hidden fees — ever. What you see is what you pay, with clear breakdowns for every service.
-          </p>
-          <p>
-            <strong className="text-foreground">Fully compliant.</strong> We adhere to Kenya's Data Protection Act and international data protection laws, keeping your health information safe and secure.
-          </p>
-        </motion.div>
+        <ul className="space-y-3 md:space-y-4">
+          {benefits.map((b, i) => (
+            <motion.li
+              key={i}
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: i * 0.07 }}
+              className="flex items-start gap-3"
+            >
+              <div className="w-5 md:w-6 h-5 md:h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Check className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary" strokeWidth={3} />
+              </div>
+              <span className="text-xs md:text-sm text-foreground font-medium leading-relaxed">{b}</span>
+            </motion.li>
+          ))}
+        </ul>
 
         <motion.div
           initial={{ opacity: 0, x: 30 }}
