@@ -51,7 +51,7 @@ const HeroSection = () => (
     </div>
 
 
-    <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent" />
+    <div className="absolute bottom-0 left-0 right-0 h-16 md:h-20 bg-gradient-to-t from-background to-transparent" />
   </section>
 );
 
