@@ -137,13 +137,13 @@ const ServicesSection = ({ onOpenChat }: { onOpenChat?: () => void }) => (
         transition={{ duration: 0.5 }}
         className="text-center mb-10 md:mb-14"
       >
-        <span className="inline-block text-[10px] md:text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4">
+        <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">
           Our Services
         </span>
-        <h2 className="text-2xl md:text-5xl font-extrabold text-foreground tracking-tight mb-3 md:mb-4">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-foreground tracking-tight mb-3 md:mb-4">
           Complete Healthcare, One Platform
         </h2>
-        <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-lg leading-relaxed">
+        <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base leading-relaxed">
           From doctor consultations to home nursing and lab tests — Aceso brings every healthcare service to your fingertips.
         </p>
       </motion.div>
