@@ -36,6 +36,15 @@ const BenefitsSection = () => (
           <p>
             <strong className="text-foreground">Affordable care packages.</strong> Choose from bundled care plans designed for post-surgery recovery, maternity support, or annual wellness — all at transparent pricing.
           </p>
+          <p>
+            <strong className="text-foreground">End-to-end encrypted records.</strong> Your medical records and consultations are protected with end-to-end encryption, ensuring complete privacy and confidentiality.
+          </p>
+          <p>
+            <strong className="text-foreground">Transparent pricing.</strong> No hidden fees — ever. What you see is what you pay, with clear breakdowns for every service.
+          </p>
+          <p>
+            <strong className="text-foreground">Fully compliant.</strong> We adhere to Kenya's Data Protection Act and international data protection laws, keeping your health information safe and secure.
+          </p>
         </motion.div>
 
         <motion.div
