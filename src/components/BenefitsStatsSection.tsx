@@ -22,7 +22,7 @@ const BenefitsStatsSection = () => (
         transition={{ duration: 0.5 }}
         className="mb-5 md:mb-6"
       >
-        <span className="inline-block text-[10px] md:text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4">
+        <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">
           Why Aceso
         </span>
         <h2 className="text-2xl md:text-4xl font-extrabold text-foreground tracking-tight mb-3 md:mb-4">

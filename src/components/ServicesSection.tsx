@@ -84,7 +84,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
         />
       </div>
       {service.badge && (
-        <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full mt-1">
+        <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full mt-1">
           <Smartphone className="w-3 h-3" />
           {service.badge}
         </span>
@@ -92,11 +92,11 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
     </div>
 
     <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3">{service.title}</h3>
-    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-4 md:mb-6">{service.description}</p>
+    <p className="text-sm text-muted-foreground leading-relaxed mb-4 md:mb-6">{service.description}</p>
 
     <ul className="space-y-2 md:space-y-2.5 mb-6 md:mb-8">
       {service.highlights.map((h) => (
-        <li key={h} className="flex items-center gap-2.5 text-xs md:text-sm text-foreground font-medium">
+        <li key={h} className="flex items-center gap-2.5 text-sm text-foreground font-medium">
           <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
           {h}
         </li>
@@ -137,13 +137,13 @@ const ServicesSection = ({ onOpenChat }: { onOpenChat?: () => void }) => (
         transition={{ duration: 0.5 }}
         className="text-center mb-10 md:mb-14"
       >
-        <span className="inline-block text-[10px] md:text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4">
+        <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">
           Our Services
         </span>
-        <h2 className="text-2xl md:text-5xl font-extrabold text-foreground tracking-tight mb-3 md:mb-4">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-foreground tracking-tight mb-3 md:mb-4">
           Complete Healthcare, One Platform
         </h2>
-        <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-lg leading-relaxed">
+        <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base leading-relaxed">
           From doctor consultations to home nursing and lab tests — Aceso brings every healthcare service to your fingertips.
         </p>
       </motion.div>

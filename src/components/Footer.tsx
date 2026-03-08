@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-14">
         <div className="col-span-2 lg:col-span-1">
           <img src={acesoLogo} alt="Aceso Health Solutions" className="h-14 w-auto object-cover object-top mb-3 md:mb-4 brightness-0 invert" />
-          <p className="text-xs md:text-sm leading-relaxed mb-4">
+          <p className="text-sm leading-relaxed mb-4">
             End-to-end healthcare management platform connecting patients with quality healthcare services across Kenya.
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-3">
@@ -23,8 +23,8 @@ const Footer = () => (
         </div>
 
         <div>
-          <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-[10px] md:text-xs uppercase tracking-[0.2em]">Quick Links</h4>
-          <ul className="space-y-2.5 md:space-y-3 text-xs md:text-sm">
+          <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-xs uppercase tracking-[0.2em]">Quick Links</h4>
+          <ul className="space-y-2.5 md:space-y-3 text-sm">
             <li><a href="#" className="hover:text-primary-foreground transition-colors duration-200">About Us</a></li>
             <li><a href="#services" className="hover:text-primary-foreground transition-colors duration-200">Services</a></li>
             <li><a href="#packages" className="hover:text-primary-foreground transition-colors duration-200">Care Packages</a></li>
@@ -33,19 +33,19 @@ const Footer = () => (
         </div>
 
         <div>
-          <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-[10px] md:text-xs uppercase tracking-[0.2em]">Legal</h4>
-          <ul className="space-y-2.5 md:space-y-3 text-xs md:text-sm">
+          <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-xs uppercase tracking-[0.2em]">Legal</h4>
+          <ul className="space-y-2.5 md:space-y-3 text-sm">
             <li><a href="#" className="hover:text-primary-foreground transition-colors duration-200">Terms of Service</a></li>
             <li><a href="#" className="hover:text-primary-foreground transition-colors duration-200">Privacy Policy</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-[10px] md:text-xs uppercase tracking-[0.2em]">Contact Us</h4>
-          <ul className="space-y-3 text-xs md:text-sm">
-            <li className="flex items-center gap-2.5 md:gap-3"><Mail className="w-3.5 md:w-4 h-3.5 md:h-4 text-primary" strokeWidth={1.5} /> info@acesohealth.co.ke</li>
-            <li className="flex items-center gap-2.5 md:gap-3"><Phone className="w-3.5 md:w-4 h-3.5 md:h-4 text-primary" strokeWidth={1.5} /> +254 758 544 241</li>
-            <li className="flex items-center gap-2.5 md:gap-3"><MapPin className="w-3.5 md:w-4 h-3.5 md:h-4 text-primary" strokeWidth={1.5} /> Mombasa, Kenya</li>
+          <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-xs uppercase tracking-[0.2em]">Contact Us</h4>
+          <ul className="space-y-3 text-sm">
+            <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" strokeWidth={1.5} /> info@acesohealth.co.ke</li>
+            <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" strokeWidth={1.5} /> +254 758 544 241</li>
+            <li className="flex items-center gap-3"><MapPin className="w-4 h-4 text-primary" strokeWidth={1.5} /> Mombasa, Kenya</li>
           </ul>
           <div className="flex items-center gap-3 mt-4">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground">
@@ -58,7 +58,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="border-t border-primary-foreground/10 pt-6 md:pt-8 text-center text-xs md:text-sm">
+      <div className="border-t border-primary-foreground/10 pt-6 md:pt-8 text-center text-sm">
         © {new Date().getFullYear()} Aceso Health Solutions. All rights reserved.
       </div>
     </div>

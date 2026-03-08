@@ -35,10 +35,10 @@ const StepsSection = () => (
         <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">
           How It Works
         </span>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight mb-4">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-foreground tracking-tight mb-4">
           Get Expert Care in 3 Simple Steps
         </h2>
-        <p className="text-muted-foreground max-w-lg mx-auto text-lg">
+        <p className="text-muted-foreground max-w-lg mx-auto text-sm md:text-base">
           With Aceso, expert healthcare is just a few clicks away.
         </p>
       </motion.div>
@@ -59,7 +59,7 @@ const StepsSection = () => (
             <span className="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">
               Step {step.number}
             </span>
-            <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
+            <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">{step.title}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
           </motion.div>
         ))}

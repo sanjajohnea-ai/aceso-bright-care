@@ -52,9 +52,9 @@ const CarePackages = () => (
         transition={{ duration: 0.5 }}
         className="text-center mb-10 md:mb-16"
       >
-        <span className="inline-block text-[10px] md:text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4">Tailored For You</span>
-        <h2 className="text-2xl md:text-5xl font-extrabold text-foreground mt-2 mb-3 md:mb-5 tracking-tight">Care Packages</h2>
-        <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-lg">
+        <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">Tailored For You</span>
+        <h2 className="text-2xl md:text-4xl font-extrabold text-foreground mt-2 mb-3 md:mb-5 tracking-tight">Care Packages</h2>
+        <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
           Bundled care plans tailored to your recovery, wellness, or new chapter in life.
         </p>
       </motion.div>
@@ -84,11 +84,11 @@ const CarePackages = () => (
             </div>
 
             <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{pkg.title}</h3>
-            <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6">{pkg.subtitle}</p>
+            <p className="text-sm text-muted-foreground mb-4 md:mb-6">{pkg.subtitle}</p>
 
             <ul className="space-y-3 mb-6 md:mb-8">
               {pkg.features.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 md:gap-3 text-xs md:text-sm text-muted-foreground">
+                <li key={f} className="flex items-start gap-2.5 md:gap-3 text-sm text-muted-foreground">
                   <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-3 h-3 text-primary" strokeWidth={3} />
                   </div>
