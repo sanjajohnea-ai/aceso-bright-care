@@ -62,7 +62,7 @@ const HeroSection = () => (
         <Search className="w-5 h-5 text-muted-foreground shrink-0" />
         <input
           type="text"
-          placeholder="Search for a doctor, specialty, or service..."
+          placeholder="Search for a doctor, nurse, lab test, or service..."
           className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none font-body"
         />
         <Button size="sm" className="rounded-full px-5">Search</Button>

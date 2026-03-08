@@ -18,7 +18,7 @@ const AccessSection = () => (
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight tracking-tight">
-            Access to elite specialists, convenience, and secure consultations.
+            Access elite specialists, home nursing, lab services, and secure consultations.
           </h2>
         </motion.div>
 
