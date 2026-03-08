@@ -192,9 +192,12 @@ const Navbar = () => {
                         {item.label}
                       </a>
                     ))}
-                    <a href="#services" onClick={() => setOpen(false)} className="block text-sm text-primary py-2 px-3">
-                      Hospital Solutions
-                    </a>
+                    <span className="block text-xs font-bold text-foreground uppercase tracking-wider px-3 pt-2 pb-1">Hospital Solutions</span>
+                    {servicesMenu.hospitals.map((item) => (
+                      <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="block text-sm text-muted-foreground hover:text-foreground py-1.5 px-3">
+                        {item.label}
+                      </a>
+                    ))}
                   </motion.div>
                 )}
               </AnimatePresence>
