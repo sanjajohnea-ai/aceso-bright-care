@@ -80,9 +80,6 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
     </div>
 
     <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3">{service.title}</h3>
-        </span>
-      )}
-    </div>
     <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-4 md:mb-6">{service.description}</p>
 
     <ul className="space-y-2 md:space-y-2.5 mb-6 md:mb-8">
