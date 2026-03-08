@@ -5,7 +5,7 @@ import heroImg from "@/assets/hero-healthcare.jpg";
 const benefits = [
   "Book consultations, view lab results & manage prescriptions — anytime, anywhere.",
   "Every professional is government-registered and thoroughly vetted.",
-  "Bundled care plans for recovery, maternity & wellness at transparent pricing.",
+  
   "End-to-end encrypted medical records and consultations.",
   "No hidden fees — clear breakdowns for every service.",
   "Compliant with Kenya's Data Protection Act & international laws.",
