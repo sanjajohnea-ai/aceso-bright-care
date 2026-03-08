@@ -103,7 +103,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
   </motion.div>
 );
 
-const ServicesSection = () => (
+const ServicesSection = ({ onOpenChat }: { onOpenChat?: () => void }) => (
   <section id="core-services" className="py-12 md:py-24 bg-background">
     <div className="container px-5">
       <motion.div
@@ -126,7 +126,12 @@ const ServicesSection = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
         {services.map((service, i) => (
-          <ServiceCard key={service.title} service={service} index={i} />
+          <ServiceCard
+            key={service.title}
+            service={service}
+            index={i}
+            onAction={service.title === "AI Health Assistant" ? onOpenChat : undefined}
+          />
         ))}
       </div>
     </div>
