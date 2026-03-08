@@ -10,12 +10,6 @@ const benefits = [
   "Compliant with Kenya's Data Protection Act & international laws.",
 ];
 
-const stats = [
-  { value: "15+", label: "Specialist Doctors" },
-  { value: "34+", label: "Consultations Completed" },
-  { value: "98%", label: "Patient Satisfaction" },
-  { value: "24/7", label: "Support Available" },
-];
 
 const BenefitsStatsSection = () => (
   <section className="py-12 md:py-20 bg-background">
