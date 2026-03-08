@@ -7,7 +7,9 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
-const ChatbotWidget = () => {
+export type ChatbotWidgetRef = { open: () => void };
+
+const ChatbotWidget = forwardRef<ChatbotWidgetRef>((_, ref) => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Msg[]>([]);
