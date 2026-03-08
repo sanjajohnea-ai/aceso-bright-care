@@ -61,22 +61,23 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
         : "border-border/50 shadow-card"
     }`}
   >
-    {service.badge && (
-      <span className="absolute top-4 right-4 md:top-6 md:right-6 inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full">
-        <Smartphone className="w-3 h-3" />
-        {service.badge}
-      </span>
-    )}
-
-    <div
-      className={`w-12 md:w-14 h-12 md:h-14 rounded-2xl flex items-center justify-center mb-4 md:mb-6 ${
-        service.featured ? "bg-accent/10" : "bg-primary/8"
-      }`}
-    >
-      <service.icon
-        className={`w-6 md:w-7 h-6 md:h-7 ${service.featured ? "text-accent" : "text-primary"}`}
-        strokeWidth={1.5}
-      />
+    <div className="flex items-start justify-between mb-4 md:mb-6">
+      <div
+        className={`w-12 md:w-14 h-12 md:h-14 rounded-2xl flex items-center justify-center ${
+          service.featured ? "bg-accent/10" : "bg-primary/8"
+        }`}
+      >
+        <service.icon
+          className={`w-6 md:w-7 h-6 md:h-7 ${service.featured ? "text-accent" : "text-primary"}`}
+          strokeWidth={1.5}
+        />
+      </div>
+      {service.badge && (
+        <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full">
+          <Smartphone className="w-3 h-3" />
+          {service.badge}
+        </span>
+      )}
     </div>
 
     <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3">{service.title}</h3>
