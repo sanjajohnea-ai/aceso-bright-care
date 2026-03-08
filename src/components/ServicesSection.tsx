@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Stethoscope, Home, FlaskConical, Pill, ShoppingBag, ArrowRight, Smartphone } from "lucide-react";
+import { Stethoscope, Home, FlaskConical, Pill, ShoppingBag, ArrowRight, Smartphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
