@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Stethoscope, Home, FlaskConical, Pill, ShoppingBag, ArrowRight, Smartphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const services = [
   {
@@ -9,6 +10,8 @@ const services = [
     description:
       "Access verified specialists across 30+ disciplines. Book in-person visits or telemedicine consultations.",
     highlights: ["In-person & video calls", "30+ specialties", "Same-day appointments"],
+    cta: "Book a Doctor",
+    link: "/doctors",
   },
   {
     icon: Home,
@@ -17,6 +20,8 @@ const services = [
       "Professional nurses come to you — from wound management and overnight care to medication administration.",
     highlights: ["Wound dressing & management", "Overnight care", "Medication administration"],
     featured: true,
+    cta: "Book a Nurse",
+    link: "/nursing",
   },
   {
     icon: FlaskConical,
@@ -24,6 +29,8 @@ const services = [
     description:
       "Convenient sample collection at home or walk-in lab visits. Accurate results delivered digitally.",
     highlights: ["Home sample collection", "Digital results delivery", "Accredited partner labs"],
+    cta: "Book a Lab Test",
+    link: "/laboratory",
   },
   {
     icon: ShoppingBag,
@@ -31,6 +38,8 @@ const services = [
     description:
       "Order prescription and over-the-counter medication from our verified pharmacy network — delivered to your door.",
     highlights: ["Prescription & OTC medicines", "Doorstep delivery", "Verified pharmacy partners"],
+    cta: "Order Medicine",
+    link: "/pharmacy",
   },
   {
     icon: Bot,
@@ -38,6 +47,7 @@ const services = [
     description:
       "Get instant specialist recommendations based on your symptoms and receive quick, personalized healthcare guidance.",
     highlights: ["Symptom-based specialist matching", "Personalized recommendations"],
+    cta: "Chat with Alex",
   },
   {
     icon: Pill,
@@ -46,6 +56,7 @@ const services = [
       "Set personalized medication schedules, receive smart reminders, and track your adherence.",
     highlights: ["Smart dose reminders", "Adherence tracking", "Medication management"],
     badge: "Mobile App",
+    cta: "Download App",
   },
 ];
 
@@ -92,14 +103,27 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
       ))}
     </ul>
 
-    <Button
-      variant={service.featured ? "hero" : "outline"}
-      className="w-full rounded-xl gap-2 group text-sm"
-      onClick={onAction}
-    >
-      {service.badge ? "Download App" : service.title === "AI Health Assistant" ? "Chat with Alex" : "Learn More"}
-      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-    </Button>
+    {service.link ? (
+      <Button
+        variant={service.featured ? "hero" : "outline"}
+        className="w-full rounded-xl gap-2 group text-sm"
+        asChild
+      >
+        <Link to={service.link}>
+          {service.cta}
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </Button>
+    ) : (
+      <Button
+        variant={service.featured ? "hero" : "outline"}
+        className="w-full rounded-xl gap-2 group text-sm"
+        onClick={onAction}
+      >
+        {service.cta}
+        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+      </Button>
+    )}
   </motion.div>
 );
 
