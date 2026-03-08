@@ -44,7 +44,7 @@ const Footer = () => (
           <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-[10px] md:text-xs uppercase tracking-[0.2em]">Contact Us</h4>
           <ul className="space-y-3 text-xs md:text-sm">
             <li className="flex items-center gap-2.5 md:gap-3"><Mail className="w-3.5 md:w-4 h-3.5 md:h-4 text-primary" strokeWidth={1.5} /> info@acesohealth.co.ke</li>
-            <li className="flex items-center gap-2.5 md:gap-3"><Phone className="w-3.5 md:w-4 h-3.5 md:h-4 text-primary" strokeWidth={1.5} /> +254 700 000 000</li>
+            <li className="flex items-center gap-2.5 md:gap-3"><Phone className="w-3.5 md:w-4 h-3.5 md:h-4 text-primary" strokeWidth={1.5} /> +254 758 544 241</li>
             <li className="flex items-center gap-2.5 md:gap-3"><MapPin className="w-3.5 md:w-4 h-3.5 md:h-4 text-primary" strokeWidth={1.5} /> Nairobi, Kenya</li>
           </ul>
           <div className="flex items-center gap-3 mt-4">
