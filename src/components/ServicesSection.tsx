@@ -103,14 +103,27 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
       ))}
     </ul>
 
-    <Button
-      variant={service.featured ? "hero" : "outline"}
-      className="w-full rounded-xl gap-2 group text-sm"
-      onClick={onAction}
-    >
-      {service.badge ? "Download App" : service.title === "AI Health Assistant" ? "Chat with Alex" : "Learn More"}
-      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-    </Button>
+    {service.link ? (
+      <Button
+        variant={service.featured ? "hero" : "outline"}
+        className="w-full rounded-xl gap-2 group text-sm"
+        asChild
+      >
+        <Link to={service.link}>
+          {service.cta}
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </Button>
+    ) : (
+      <Button
+        variant={service.featured ? "hero" : "outline"}
+        className="w-full rounded-xl gap-2 group text-sm"
+        onClick={onAction}
+      >
+        {service.cta}
+        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+      </Button>
+    )}
   </motion.div>
 );
 
