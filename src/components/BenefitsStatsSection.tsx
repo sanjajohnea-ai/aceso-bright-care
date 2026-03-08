@@ -44,7 +44,7 @@ const BenefitsStatsSection = () => (
               <div className="w-5 md:w-6 h-5 md:h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                 <Check className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary" strokeWidth={3} />
               </div>
-              <span className="text-xs md:text-sm text-foreground font-medium leading-relaxed">{b}</span>
+              <span className="text-sm md:text-base text-foreground font-medium leading-relaxed">{b}</span>
             </motion.li>
           ))}
         </ul>
