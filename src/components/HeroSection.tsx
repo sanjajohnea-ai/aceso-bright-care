@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Search, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-healthcare.jpg";
 
 const HeroSection = () => (

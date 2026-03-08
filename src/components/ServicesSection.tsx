@@ -104,7 +104,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
 );
 
 const ServicesSection = ({ onOpenChat }: { onOpenChat?: () => void }) => (
-  <section id="core-services" className="py-12 md:py-24 bg-background">
+  <section id="core-services" className="py-12 md:py-20 bg-background">
     <div className="container px-5">
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -19,7 +19,7 @@ const stats = [
 ];
 
 const BenefitsStatsSection = () => (
-  <section className="py-12 md:py-24 bg-background">
+  <section className="py-12 md:py-20 bg-background">
     <div className="container px-5">
       {/* Benefits */}
       <motion.div
