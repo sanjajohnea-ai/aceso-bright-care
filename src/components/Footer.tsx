@@ -58,7 +58,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="border-t border-primary-foreground/10 pt-6 md:pt-8 text-center text-xs md:text-sm">
+      <div className="border-t border-primary-foreground/10 pt-6 md:pt-8 text-center text-sm">
         © {new Date().getFullYear()} Aceso Health Solutions. All rights reserved.
       </div>
     </div>

@@ -23,7 +23,7 @@ const StatsSection = () => (
             <div className="text-3xl md:text-5xl font-extrabold text-primary-foreground mb-1">
               {stat.value}
             </div>
-            <div className="text-xs md:text-sm text-primary-foreground/70 font-medium">
+            <div className="text-sm text-primary-foreground/70 font-medium">
               {stat.label}
             </div>
           </motion.div>

@@ -85,13 +85,13 @@ const MobileAppSection = () => {
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="order-1 lg:order-2"
           >
-            <span className="inline-block text-[10px] md:text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4">
+            <span className="inline-block text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/8 px-4 py-1.5 rounded-full mb-4">
               Mobile App
             </span>
-            <h2 className="text-2xl md:text-5xl font-extrabold text-foreground mb-4 md:mb-5 tracking-tight">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-foreground mb-4 md:mb-5 tracking-tight">
               Healthcare in Your Pocket
             </h2>
-            <p className="text-muted-foreground text-sm md:text-lg mb-6 md:mb-8 max-w-md leading-relaxed">
+            <p className="text-muted-foreground text-sm md:text-base mb-6 md:mb-8 max-w-md leading-relaxed">
               Download the Aceso Health app and manage appointments, access medical records, chat with providers, and get reminders — all from your phone.
             </p>
 

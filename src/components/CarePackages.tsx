@@ -84,11 +84,11 @@ const CarePackages = () => (
             </div>
 
             <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{pkg.title}</h3>
-            <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6">{pkg.subtitle}</p>
+            <p className="text-sm text-muted-foreground mb-4 md:mb-6">{pkg.subtitle}</p>
 
             <ul className="space-y-3 mb-6 md:mb-8">
               {pkg.features.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 md:gap-3 text-xs md:text-sm text-muted-foreground">
+                <li key={f} className="flex items-start gap-2.5 md:gap-3 text-sm text-muted-foreground">
                   <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-3 h-3 text-primary" strokeWidth={3} />
                   </div>

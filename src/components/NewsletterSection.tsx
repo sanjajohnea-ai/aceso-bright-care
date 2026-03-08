@@ -21,10 +21,10 @@ const NewsletterSection = () => (
           <input
             type="email"
             placeholder="Enter your email address"
-            className="flex-1 px-4 md:px-5 py-2.5 md:py-3 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 text-xs md:text-sm outline-none focus:border-primary-foreground/40 transition-colors font-body"
+            className="flex-1 px-5 py-3 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 text-sm outline-none focus:border-primary-foreground/40 transition-colors font-body"
           />
-          <Button variant="hero" className="rounded-full px-5 md:px-6 gap-2 text-xs md:text-sm">
-            Subscribe <Send className="w-3.5 md:w-4 h-3.5 md:h-4" />
+          <Button variant="hero" className="rounded-full px-6 gap-2 text-sm">
+            Subscribe <Send className="w-4 h-4" />
           </Button>
         </div>
       </motion.div>

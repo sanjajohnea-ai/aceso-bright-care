@@ -59,7 +59,7 @@ const StepsSection = () => (
             <span className="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">
               Step {step.number}
             </span>
-            <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
+            <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">{step.title}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
           </motion.div>
         ))}

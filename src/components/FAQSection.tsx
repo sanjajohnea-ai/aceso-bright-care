@@ -45,7 +45,7 @@ const FAQSection = () => (
             <AccordionTrigger className="text-left text-foreground text-sm md:text-base">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground whitespace-pre-line text-xs md:text-sm">
+            <AccordionContent className="text-muted-foreground whitespace-pre-line text-sm">
               {faq.answer}
             </AccordionContent>
           </AccordionItem>

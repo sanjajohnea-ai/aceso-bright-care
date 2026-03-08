@@ -96,7 +96,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
 
     <ul className="space-y-2 md:space-y-2.5 mb-6 md:mb-8">
       {service.highlights.map((h) => (
-        <li key={h} className="flex items-center gap-2.5 text-xs md:text-sm text-foreground font-medium">
+        <li key={h} className="flex items-center gap-2.5 text-sm text-foreground font-medium">
           <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
           {h}
         </li>
