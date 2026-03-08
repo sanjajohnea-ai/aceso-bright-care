@@ -73,7 +73,7 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
         />
       </div>
       {service.badge && (
-        <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full">
+        <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-primary bg-primary/8 px-2 py-0.5 rounded-full mt-1">
           <Smartphone className="w-3 h-3" />
           {service.badge}
         </span>
