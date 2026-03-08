@@ -11,10 +11,10 @@ const NewsletterSection = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-xl md:text-3xl font-extrabold text-primary-foreground mb-2 md:mb-3 tracking-tight">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-primary-foreground mb-2 md:mb-3 tracking-tight">
           Subscribe to our Newsletter
         </h2>
-        <p className="text-primary-foreground/70 mb-6 md:mb-8 text-xs md:text-sm">
+        <p className="text-primary-foreground/70 mb-6 md:mb-8 text-sm md:text-base">
           Stay updated with health tips, new specialists, and platform updates.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
