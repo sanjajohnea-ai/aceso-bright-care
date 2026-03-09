@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 import acesoLogo from "@/assets/aceso-logo.png";
 
 const Footer = () => (
@@ -35,8 +36,9 @@ const Footer = () => (
         <div>
           <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-xs uppercase tracking-[0.2em]">Legal</h4>
           <ul className="space-y-2.5 md:space-y-3 text-sm">
-            <li><a href="#" className="hover:text-primary-foreground transition-colors duration-200">Terms of Service</a></li>
-            <li><a href="#" className="hover:text-primary-foreground transition-colors duration-200">Privacy Policy</a></li>
+            <li><Link to="/terms" className="hover:text-primary-foreground transition-colors duration-200">Terms of Service</Link></li>
+            <li><Link to="/privacy" className="hover:text-primary-foreground transition-colors duration-200">Privacy Policy</Link></li>
+            <li><Link to="/cancellation-policy" className="hover:text-primary-foreground transition-colors duration-200">Cancellation &amp; Refund Policy</Link></li>
           </ul>
         </div>
 
