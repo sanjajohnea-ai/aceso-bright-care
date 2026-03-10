@@ -40,7 +40,7 @@ const PostSurgeryPackagePage = () => {
         </div>
       </LegalSection>
 
-      <LegalSection number={1} title="Home Nursing Care">
+      <LegalSection number="1" title="Home Nursing Care">
         <p className="text-muted-foreground text-sm leading-relaxed mb-3">
           A licensed nurse from a partnered home nursing facility will provide in-home care.
         </p>
