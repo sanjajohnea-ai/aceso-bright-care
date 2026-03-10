@@ -35,7 +35,7 @@ const services = [
     description: "Prescription and OTC medication delivered to your door.",
     highlights: ["Prescription & OTC medicines", "Doorstep delivery", "Verified pharmacy partners"],
     cta: "Order Medicine",
-    link: "/pharmacy",
+    link: "https://acesohealth.co.ke/patient-dashboard/medicines",
   },
   {
     icon: Bot,
