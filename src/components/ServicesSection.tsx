@@ -10,7 +10,7 @@ const services = [
     description: "Access verified specialists across 30+ disciplines.",
     highlights: ["In-person & video calls", "30+ specialties", "Same-day appointments"],
     cta: "Book a Doctor",
-    link: "/doctors",
+    link: "https://acesohealth.co.ke/patient-dashboard/consultation",
   },
   {
     icon: Home,
