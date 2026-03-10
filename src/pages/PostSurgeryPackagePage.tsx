@@ -30,7 +30,7 @@ const PostSurgeryPackagePage = () => {
         Please review the scope of services included in this package before confirming your booking.
       </p>
 
-      <LegalSection number={0} title="Package Overview">
+      <LegalSection number="" title="Package Overview">
         <p className="text-muted-foreground text-sm leading-relaxed">
           The Standard Post-Surgery Recovery Package provides short-term support to help patients recover safely at home following hospital discharge. Services are coordinated through licensed healthcare partners.
         </p>
