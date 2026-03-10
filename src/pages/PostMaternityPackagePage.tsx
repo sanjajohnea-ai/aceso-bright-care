@@ -148,7 +148,7 @@ const PostMaternityPackagePage = () => {
         </ul>
       </LegalSection>
 
-      <LegalSection number={3} title="Nutritional Consultation">
+      <LegalSection number="3" title="Nutritional Consultation">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
           <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
             <p className="text-xs font-semibold text-foreground uppercase tracking-wider mb-1">Duration</p>
