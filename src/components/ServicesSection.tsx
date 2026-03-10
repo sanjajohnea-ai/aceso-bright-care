@@ -103,10 +103,10 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
         className="w-full rounded-xl gap-2 group text-sm"
         asChild
       >
-        <Link to={service.link}>
+        <a href={service.link} target={service.link.startsWith("http") ? "_blank" : undefined} rel={service.link.startsWith("http") ? "noopener noreferrer" : undefined}>
           {service.cta}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-        </Link>
+        </a>
       </Button>
     ) : (
       <Button

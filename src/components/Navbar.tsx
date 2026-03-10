@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b-0">
       <div className="container flex items-center justify-between h-[72px]">
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img src={acesoLogo} alt="Aceso Health Solutions" className="h-28 w-auto object-cover object-top" />
         </a>
 
