@@ -15,13 +15,6 @@ const LegalPageLayout = ({ title, subtitle, children }: LegalPageLayoutProps) =>
       {/* Header */}
       <div className="bg-gradient-to-br from-primary/8 via-secondary to-background border-b border-border/50">
         <div className="container px-5 max-w-4xl mx-auto py-10 md:py-14">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-6 group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-            Back to Home
-          </Link>
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
