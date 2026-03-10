@@ -19,7 +19,7 @@ const services = [
     highlights: ["Wound dressing & management", "Overnight care", "Medication administration"],
     featured: true,
     cta: "Book a Nurse",
-    link: "/nursing",
+    link: "https://acesohealth.co.ke/patient-dashboard/nursing",
   },
   {
     icon: FlaskConical,
