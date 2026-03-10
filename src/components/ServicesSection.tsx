@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Stethoscope, Home, FlaskConical, Pill, ShoppingBag, ArrowRight, Smartphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+
 
 const services = [
   {
@@ -10,7 +10,7 @@ const services = [
     description: "Access verified specialists across 30+ disciplines.",
     highlights: ["In-person & video calls", "30+ specialties", "Same-day appointments"],
     cta: "Book a Doctor",
-    link: "/doctors",
+    link: "https://acesohealth.co.ke/patient-dashboard/consultation",
   },
   {
     icon: Home,
@@ -19,7 +19,7 @@ const services = [
     highlights: ["Wound dressing & management", "Overnight care", "Medication administration"],
     featured: true,
     cta: "Book a Nurse",
-    link: "/nursing",
+    link: "https://acesohealth.co.ke/patient-dashboard/nursing",
   },
   {
     icon: FlaskConical,
@@ -27,7 +27,7 @@ const services = [
     description: "Convenient sample collection and accurate digital results.",
     highlights: ["Home sample collection", "Digital results delivery", "Accredited partner labs"],
     cta: "Book a Lab Test",
-    link: "/laboratory",
+    link: "https://acesohealth.co.ke/patient-dashboard/lab-tests",
   },
   {
     icon: ShoppingBag,
@@ -35,7 +35,7 @@ const services = [
     description: "Prescription and OTC medication delivered to your door.",
     highlights: ["Prescription & OTC medicines", "Doorstep delivery", "Verified pharmacy partners"],
     cta: "Order Medicine",
-    link: "/pharmacy",
+    link: "https://acesohealth.co.ke/patient-dashboard/medicines",
   },
   {
     icon: Bot,
@@ -103,10 +103,10 @@ const ServiceCard = ({ service, index, onAction }: { service: typeof services[0]
         className="w-full rounded-xl gap-2 group text-sm"
         asChild
       >
-        <Link to={service.link}>
+        <a href={service.link} target={service.link.startsWith("http") ? "_blank" : undefined} rel={service.link.startsWith("http") ? "noopener noreferrer" : undefined}>
           {service.cta}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-        </Link>
+        </a>
       </Button>
     ) : (
       <Button
