@@ -15,6 +15,7 @@ const packages = [
       "Wound management & care guidance",
     ],
     price: "12,500",
+    link: "/packages/post-surgery",
   },
   {
     icon: Baby,
