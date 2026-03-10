@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Heart, Baby, Activity, Check, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const packages = [
   {
@@ -14,6 +15,7 @@ const packages = [
       "Wound management & care guidance",
     ],
     price: "12,500",
+    link: "/packages/post-surgery",
   },
   {
     icon: Baby,
@@ -27,6 +29,7 @@ const packages = [
     ],
     price: "10,800",
     featured: true,
+    link: "/packages/post-maternity",
   },
   {
     icon: Activity,
@@ -103,13 +106,26 @@ const CarePackages = () => (
               <span className="text-xs md:text-sm text-muted-foreground ml-1">/ package</span>
             </div>
 
-            <Button
-              variant={pkg.featured ? "hero" : "outline"}
-              className="w-full rounded-xl gap-2 group text-sm"
-            >
-              Book Now
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            {pkg.link ? (
+              <Button
+                variant={pkg.featured ? "hero" : "outline"}
+                className="w-full rounded-xl gap-2 group text-sm"
+                asChild
+              >
+                <Link to={pkg.link}>
+                  Book Now
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            ) : (
+              <Button
+                variant={pkg.featured ? "hero" : "outline"}
+                className="w-full rounded-xl gap-2 group text-sm"
+              >
+                Book Now
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            )}
           </motion.div>
         ))}
       </div>

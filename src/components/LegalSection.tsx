@@ -10,9 +10,11 @@ const LegalSection = ({ number, title, children }: LegalSectionProps) => (
   <Card className="border-border/60 shadow-none hover:shadow-sm transition-shadow duration-300 overflow-hidden">
     <CardContent className="p-5 md:p-7">
       <div className="flex items-start gap-3 md:gap-4 mb-3">
-        <span className="shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-lg bg-primary/10 text-primary font-display font-bold text-sm md:text-base flex items-center justify-center">
-          {number}
-        </span>
+        {number && (
+          <span className="shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-lg bg-primary/10 text-primary font-display font-bold text-sm md:text-base flex items-center justify-center">
+            {number}
+          </span>
+        )}
         <h2 className="font-display font-semibold text-lg md:text-xl text-foreground pt-0.5 leading-snug">
           {title}
         </h2>

@@ -9,6 +9,8 @@ import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import CancellationPage from "./pages/CancellationPage";
 import AboutPage from "./pages/AboutPage";
+import PostSurgeryPackagePage from "./pages/PostSurgeryPackagePage";
+import PostMaternityPackagePage from "./pages/PostMaternityPackagePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cancellation-policy" element={<CancellationPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/packages/post-surgery" element={<PostSurgeryPackagePage />} />
+          <Route path="/packages/post-maternity" element={<PostMaternityPackagePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

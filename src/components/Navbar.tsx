@@ -23,7 +23,7 @@ const servicesMenu = {
 
 const navLinks = [
   { label: "Care Packages", href: "#packages" },
-  { label: "About Us", href: "#cta" },
+  { label: "About Us", href: "/about" },
 ];
 
 const Navbar = () => {
