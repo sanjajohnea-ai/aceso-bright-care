@@ -28,6 +28,8 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cancellation-policy" element={<CancellationPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/packages/post-surgery" element={<PostSurgeryPackagePage />} />
+          <Route path="/packages/post-maternity" element={<PostMaternityPackagePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

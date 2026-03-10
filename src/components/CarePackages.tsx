@@ -106,13 +106,26 @@ const CarePackages = () => (
               <span className="text-xs md:text-sm text-muted-foreground ml-1">/ package</span>
             </div>
 
-            <Button
-              variant={pkg.featured ? "hero" : "outline"}
-              className="w-full rounded-xl gap-2 group text-sm"
-            >
-              Book Now
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            {pkg.link ? (
+              <Button
+                variant={pkg.featured ? "hero" : "outline"}
+                className="w-full rounded-xl gap-2 group text-sm"
+                asChild
+              >
+                <Link to={pkg.link}>
+                  Book Now
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            ) : (
+              <Button
+                variant={pkg.featured ? "hero" : "outline"}
+                className="w-full rounded-xl gap-2 group text-sm"
+              >
+                Book Now
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            )}
           </motion.div>
         ))}
       </div>
