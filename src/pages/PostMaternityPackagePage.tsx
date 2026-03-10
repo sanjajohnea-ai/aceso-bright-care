@@ -30,7 +30,7 @@ const PostMaternityPackagePage = () => {
         Please review the scope of services included in this package before confirming your booking.
       </p>
 
-      <LegalSection number={0} title="Package Overview">
+      <LegalSection number="" title="Package Overview">
         <p className="text-muted-foreground text-sm leading-relaxed">
           The Standard Post-Maternity Care Package provides short-term professional support to assist mothers and newborns during the early days after hospital discharge. Services are coordinated through licensed healthcare partners to support maternal recovery and newborn care at home.
         </p>
