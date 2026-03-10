@@ -171,7 +171,7 @@ const PostMaternityPackagePage = () => {
         </ul>
       </LegalSection>
 
-      <LegalSection number={4} title="Newborn Care Guidance and Support">
+      <LegalSection number="4" title="Newborn Care Guidance and Support">
         <p className="text-muted-foreground text-sm leading-relaxed mb-3">
           Support will be provided during the scheduled nursing visits.
         </p>
