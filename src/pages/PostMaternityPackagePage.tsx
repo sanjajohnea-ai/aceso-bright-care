@@ -191,7 +191,7 @@ const PostMaternityPackagePage = () => {
         </ul>
       </LegalSection>
 
-      <LegalSection number={0} title="Services Not Included in the Package">
+      <LegalSection number="" title="Services Not Included in the Package">
         <p className="text-muted-foreground text-sm leading-relaxed mb-3">
           The following services are not included unless separately arranged:
         </p>
