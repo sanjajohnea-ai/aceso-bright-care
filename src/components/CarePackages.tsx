@@ -29,6 +29,7 @@ const packages = [
     ],
     price: "10,800",
     featured: true,
+    link: "/packages/post-maternity",
   },
   {
     icon: Activity,
