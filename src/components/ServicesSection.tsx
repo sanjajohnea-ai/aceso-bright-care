@@ -27,7 +27,7 @@ const services = [
     description: "Convenient sample collection and accurate digital results.",
     highlights: ["Home sample collection", "Digital results delivery", "Accredited partner labs"],
     cta: "Book a Lab Test",
-    link: "/laboratory",
+    link: "https://acesohealth.co.ke/patient-dashboard/lab-tests",
   },
   {
     icon: ShoppingBag,
