@@ -116,7 +116,7 @@ const PostSurgeryPackagePage = () => {
         </ul>
       </LegalSection>
 
-      <LegalSection number={4} title="Wound Care Management and Support">
+      <LegalSection number="4" title="Wound Care Management and Support">
         <p className="text-muted-foreground text-sm leading-relaxed mb-3">
           Wound care guidance will be provided during the scheduled nursing visits.
         </p>
