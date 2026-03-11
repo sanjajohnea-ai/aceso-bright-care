@@ -61,7 +61,7 @@ const Footer = () => (
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground">
               <Facebook className="w-4 h-4" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground">
+            <a href="https://www.linkedin.com/company/aceso-health-solutions" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/15 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground">
               <Linkedin className="w-4 h-4" />
             </a>
           </div>

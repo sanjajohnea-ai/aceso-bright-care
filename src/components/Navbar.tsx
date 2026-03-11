@@ -6,23 +6,23 @@ import acesoLogo from "@/assets/aceso-logo.png";
 
 const servicesMenu = {
   patients: [
-    { label: "Doctor Consultations", href: "#services" },
-    { label: "Medicine Delivery", href: "#services" },
-    { label: "Laboratory Services", href: "#services" },
-    { label: "Home Nursing Care", href: "#services" },
+    { label: "Doctor Consultations", href: "/#core-services" },
+    { label: "Pharmacy Orders", href: "/#core-services" },
+    { label: "Laboratory Services", href: "/#core-services" },
+    { label: "Home Nursing", href: "/#core-services" },
   ],
   providers: [
-    { label: "Medical Billing", href: "#services" },
-    { label: "Remote Admin Support", href: "#services" },
-    { label: "Credentialing Services", href: "#services" },
+    { label: "Medical Billing", href: "https://acesohealth.co.ke/services/medical-billing", external: true },
+    { label: "Remote Admin Support", href: "https://acesohealth.co.ke/services/remote-admin", external: true },
+    { label: "Credentialing Services", href: "https://acesohealth.co.ke/services/credentialing", external: true },
   ],
   hospitals: [
-    { label: "Hospital Management Systems", href: "#services" },
+    { label: "Hospital Management Systems", href: "https://acesohealth.co.ke/services/hospital-solutions", external: true },
   ],
 };
 
 const navLinks = [
-  { label: "Care Packages", href: "#packages" },
+  { label: "Care Packages", href: "/#packages" },
   { label: "About Us", href: "/about" },
 ];
 
