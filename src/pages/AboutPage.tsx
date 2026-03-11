@@ -77,7 +77,7 @@ const AboutPage = () => (
               </li>
             ))}
           </ul>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed mt-4">
+          <p className="text-muted-foreground text-sm leading-relaxed mt-4">
             Whether you're a patient seeking convenience and care or a medical specialist building a practice, Aceso Health Solutions is designed to support you.
           </p>
         </CardContent>
