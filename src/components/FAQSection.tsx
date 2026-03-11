@@ -26,7 +26,7 @@ export const faqs = [
   },
   {
     question: "Is the fee refundable?",
-    answer: "Fees are non-refundable once your case is assigned to a specialist. Cancellation before assignment may be eligible for a refund, per our Cancellation & Refund policy.",
+    answer: "Fees are non-refundable once your case is assigned to a specialist. Cancellation before assignment may be eligible for a refund, per our [Cancellation & Refund policy](/cancellation-policy).",
   },
 ];
 
