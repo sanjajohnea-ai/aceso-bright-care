@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const renderAnswer = (text: string) => {
+export const renderAnswer = (text: string) => {
   const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, i) => {
     const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
