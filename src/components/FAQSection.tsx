@@ -3,6 +3,17 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const renderAnswer = (text: string) => {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((part, i) => {
+    const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+    if (match) {
+      return <Link key={i} to={match[2]} className="text-primary underline hover:text-primary/80">{match[1]}</Link>;
+    }
+    return part;
+  });
+};
+
 export const faqs = [
   {
     question: "How do I request for a consultation through Aceso Health?",
