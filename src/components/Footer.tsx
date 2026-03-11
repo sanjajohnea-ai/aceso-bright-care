@@ -3,15 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import acesoLogo from "@/assets/aceso-logo.png";
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
-  return null;
-};
-
 const Footer = () => (
   <footer id="footer" className="bg-foreground text-primary-foreground/60 py-10 md:py-14">
-    <ScrollToTop />
     <div className="container px-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-14">
         <div className="sm:col-span-2 lg:col-span-1">
