@@ -101,6 +101,8 @@ const Navbar = () => {
                     <a
                       key={item.label}
                       href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
                       onClick={() => setServicesOpen(false)}
                       className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
                     >
@@ -114,6 +116,8 @@ const Navbar = () => {
                     <a
                       key={item.label}
                       href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
                       onClick={() => setServicesOpen(false)}
                       className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
                     >
