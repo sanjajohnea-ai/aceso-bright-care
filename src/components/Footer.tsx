@@ -7,7 +7,7 @@ const Footer = () => (
     <div className="container px-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-14">
         <div className="sm:col-span-2 lg:col-span-1">
-          <img src={acesoLogo} alt="Aceso Health Solutions" className="h-28 w-auto object-cover object-top mb-3 md:mb-4 brightness-0 invert" />
+          <img src={acesoLogo} alt="Aceso Health Solutions" className="h-16 w-auto object-cover object-top mb-2 brightness-0 invert" />
           <p className="text-sm leading-relaxed mb-4">
             End-to-end healthcare management platform connecting patients with quality healthcare services across Kenya.
           </p>
@@ -27,7 +27,7 @@ const Footer = () => (
           <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-xs uppercase tracking-[0.2em]">Quick Links</h4>
           <ul className="space-y-2.5 md:space-y-3 text-sm">
             <li><Link to="/about" className="hover:text-primary-foreground transition-colors duration-200">About Us</Link></li>
-            <li><Link to="/#core-services" className="hover:text-primary-foreground transition-colors duration-200">Services</Link></li>
+            <li><a href="https://acesohealth.co.ke/patient-dashboard/lab-tests" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors duration-200">Services</a></li>
             <li><Link to="/#packages" className="hover:text-primary-foreground transition-colors duration-200">Care Packages</Link></li>
             <li><Link to="/faq" className="hover:text-primary-foreground transition-colors duration-200">FAQs</Link></li>
           </ul>

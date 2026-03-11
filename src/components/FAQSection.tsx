@@ -3,6 +3,17 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
+export const renderAnswer = (text: string) => {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((part, i) => {
+    const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+    if (match) {
+      return <Link key={i} to={match[2]} className="text-primary underline hover:text-primary/80">{match[1]}</Link>;
+    }
+    return part;
+  });
+};
+
 export const faqs = [
   {
     question: "How do I request for a consultation through Aceso Health?",
@@ -26,7 +37,7 @@ export const faqs = [
   },
   {
     question: "Is the fee refundable?",
-    answer: "Fees are non-refundable once your case is assigned to a specialist. Cancellation before assignment may be eligible for a refund, per our Cancellation & Refund policy.",
+    answer: "Fees are non-refundable once your case is assigned to a specialist. Cancellation before assignment may be eligible for a refund, per our [Cancellation & Refund policy](/cancellation-policy).",
   },
 ];
 
@@ -46,7 +57,7 @@ const FAQSection = () => (
               {faq.question}
             </AccordionTrigger>
             <AccordionContent className="text-muted-foreground whitespace-pre-line text-sm">
-              {faq.answer}
+              {renderAnswer(faq.answer)}
             </AccordionContent>
           </AccordionItem>
         ))}
