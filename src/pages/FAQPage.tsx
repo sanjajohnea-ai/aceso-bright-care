@@ -49,7 +49,7 @@ const FAQPage = () => (
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground whitespace-pre-line">
-                {faq.answer}
+                {renderAnswer(faq.answer)}
               </AccordionContent>
             </AccordionItem>
           ))}
