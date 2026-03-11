@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Facebook, Linkedin } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import acesoLogo from "@/assets/aceso-logo.png";
 
 const Footer = () => (
