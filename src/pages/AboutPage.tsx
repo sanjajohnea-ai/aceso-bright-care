@@ -88,7 +88,7 @@ const AboutPage = () => (
     <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }}>
       <Card className="border-border/60 shadow-none overflow-hidden">
         <CardContent className="p-6 md:p-10">
-          <h2 className="font-display font-bold text-xl md:text-2xl text-foreground mb-4">
+          <h2 className="font-display font-bold text-lg md:text-xl text-foreground mb-4">
             Why We Exist
           </h2>
           <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed">
