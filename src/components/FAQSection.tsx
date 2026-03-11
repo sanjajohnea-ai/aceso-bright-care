@@ -57,7 +57,7 @@ const FAQSection = () => (
               {faq.question}
             </AccordionTrigger>
             <AccordionContent className="text-muted-foreground whitespace-pre-line text-sm">
-              {faq.answer}
+              {renderAnswer(faq.answer)}
             </AccordionContent>
           </AccordionItem>
         ))}
