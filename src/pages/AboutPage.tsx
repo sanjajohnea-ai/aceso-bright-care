@@ -59,7 +59,7 @@ const AboutPage = () => (
               What We Do
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed mb-4">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
             Aceso Health Solutions is a full-service digital healthcare platform that transforms how patients and providers interact. We connect patients with top specialists, offer online pharmaceutical shopping, and make it easy to book home-based nursing care or lab sample collection—all from the comfort of home.
           </p>
           <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed mb-3">
