@@ -21,7 +21,7 @@ const MobileAppSection = () => {
   }, []);
 
   return (
-    <section className="py-12 md:py-20 bg-muted/40 relative overflow-hidden">
+    <section id="mobile-app" className="py-12 md:py-20 bg-muted/40 relative overflow-hidden">
       <div className="container px-5">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           {/* Phone mockup */}
