@@ -6,23 +6,23 @@ import acesoLogo from "@/assets/aceso-logo.png";
 
 const servicesMenu = {
   patients: [
-    { label: "Doctor Consultations", href: "#services" },
-    { label: "Medicine Delivery", href: "#services" },
-    { label: "Laboratory Services", href: "#services" },
-    { label: "Home Nursing Care", href: "#services" },
+    { label: "Doctor Consultations", href: "/#core-services" },
+    { label: "Pharmacy Orders", href: "/#core-services" },
+    { label: "Laboratory Services", href: "/#core-services" },
+    { label: "Home Nursing", href: "/#core-services" },
   ],
   providers: [
-    { label: "Medical Billing", href: "#services" },
-    { label: "Remote Admin Support", href: "#services" },
-    { label: "Credentialing Services", href: "#services" },
+    { label: "Medical Billing", href: "https://acesohealth.co.ke/services/medical-billing", external: true },
+    { label: "Remote Admin Support", href: "https://acesohealth.co.ke/services/remote-admin", external: true },
+    { label: "Credentialing Services", href: "https://acesohealth.co.ke/services/credentialing", external: true },
   ],
   hospitals: [
-    { label: "Hospital Management Systems", href: "#services" },
+    { label: "Hospital Management Systems", href: "https://acesohealth.co.ke/services/hospital-solutions", external: true },
   ],
 };
 
 const navLinks = [
-  { label: "Care Packages", href: "#packages" },
+  { label: "Care Packages", href: "/#packages" },
   { label: "About Us", href: "/about" },
 ];
 
@@ -101,6 +101,8 @@ const Navbar = () => {
                     <a
                       key={item.label}
                       href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
                       onClick={() => setServicesOpen(false)}
                       className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
                     >
@@ -114,6 +116,8 @@ const Navbar = () => {
                     <a
                       key={item.label}
                       href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
                       onClick={() => setServicesOpen(false)}
                       className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
                     >
@@ -192,13 +196,13 @@ const Navbar = () => {
                     ))}
                     <span className="block text-xs font-bold text-foreground uppercase tracking-wider px-3 pt-2 pb-1">For Providers</span>
                     {servicesMenu.providers.map((item) => (
-                      <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="block text-sm text-muted-foreground hover:text-foreground py-1.5 px-3">
+                      <a key={item.label} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} onClick={() => setOpen(false)} className="block text-sm text-muted-foreground hover:text-foreground py-1.5 px-3">
                         {item.label}
                       </a>
                     ))}
                     <span className="block text-xs font-bold text-foreground uppercase tracking-wider px-3 pt-2 pb-1">Hospital Solutions</span>
                     {servicesMenu.hospitals.map((item) => (
-                      <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="block text-sm text-muted-foreground hover:text-foreground py-1.5 px-3">
+                      <a key={item.label} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} onClick={() => setOpen(false)} className="block text-sm text-muted-foreground hover:text-foreground py-1.5 px-3">
                         {item.label}
                       </a>
                     ))}

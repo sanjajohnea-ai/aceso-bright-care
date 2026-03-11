@@ -36,11 +36,11 @@ const AboutPage = () => (
             <span className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
               <Heart className="w-5 h-5 text-primary" />
             </span>
-            <h2 className="font-display font-bold text-xl md:text-2xl text-foreground">
+            <h2 className="font-display font-bold text-lg md:text-xl text-foreground">
               Bringing Healthcare Home
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed mb-4">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
             At Aceso Health Solutions, we believe that access to quality healthcare should be simple, affordable, and within reach of everyone—no matter where they are. Our name, <strong className="text-foreground">Aceso</strong>, comes from the Greek goddess of healing and recovery, reflecting our mission: to make hospital-grade care accessible online, through a seamless and trustworthy platform.
           </p>
         </CardContent>
@@ -55,14 +55,14 @@ const AboutPage = () => (
             <span className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
               <Stethoscope className="w-5 h-5 text-primary" />
             </span>
-            <h2 className="font-display font-bold text-xl md:text-2xl text-foreground">
+            <h2 className="font-display font-bold text-lg md:text-xl text-foreground">
               What We Do
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed mb-4">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
             Aceso Health Solutions is a full-service digital healthcare platform that transforms how patients and providers interact. We connect patients with top specialists, offer online pharmaceutical shopping, and make it easy to book home-based nursing care or lab sample collection—all from the comfort of home.
           </p>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed mb-3">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-3">
             But we also go further. We support healthcare professionals behind the scenes by offering:
           </p>
           <ul className="space-y-2.5 pl-1">
@@ -77,7 +77,7 @@ const AboutPage = () => (
               </li>
             ))}
           </ul>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed mt-4">
+          <p className="text-muted-foreground text-sm leading-relaxed mt-4">
             Whether you're a patient seeking convenience and care or a medical specialist building a practice, Aceso Health Solutions is designed to support you.
           </p>
         </CardContent>
@@ -88,10 +88,10 @@ const AboutPage = () => (
     <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }}>
       <Card className="border-border/60 shadow-none overflow-hidden">
         <CardContent className="p-6 md:p-10">
-          <h2 className="font-display font-bold text-xl md:text-2xl text-foreground mb-4">
+          <h2 className="font-display font-bold text-lg md:text-xl text-foreground mb-4">
             Why We Exist
           </h2>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed">
+          <p className="text-muted-foreground text-sm leading-relaxed">
             Healthcare is evolving—and we're here to lead that transformation. Long queues, travel challenges, and limited specialist access shouldn't be barriers to wellness. Aceso Health Solutions was created to close that gap by delivering healthcare with the same standards you'd expect in a hospital, but with the ease of digital access.
           </p>
         </CardContent>
