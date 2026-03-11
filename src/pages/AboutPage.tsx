@@ -40,7 +40,7 @@ const AboutPage = () => (
               Bringing Healthcare Home
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed mb-4">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
             At Aceso Health Solutions, we believe that access to quality healthcare should be simple, affordable, and within reach of everyone—no matter where they are. Our name, <strong className="text-foreground">Aceso</strong>, comes from the Greek goddess of healing and recovery, reflecting our mission: to make hospital-grade care accessible online, through a seamless and trustworthy platform.
           </p>
         </CardContent>
