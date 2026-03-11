@@ -27,7 +27,7 @@ const Footer = () => (
           <h4 className="font-semibold text-primary-foreground mb-4 md:mb-5 text-xs uppercase tracking-[0.2em]">Quick Links</h4>
           <ul className="space-y-2.5 md:space-y-3 text-sm">
             <li><Link to="/about" className="hover:text-primary-foreground transition-colors duration-200">About Us</Link></li>
-            <li><a href="https://acesohealth.co.ke/patient-dashboard/lab-tests" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors duration-200">Services</a></li>
+            <li><Link to="/#core-services" className="hover:text-primary-foreground transition-colors duration-200">Services</Link></li>
             <li><Link to="/#packages" className="hover:text-primary-foreground transition-colors duration-200">Care Packages</Link></li>
             <li><Link to="/faq" className="hover:text-primary-foreground transition-colors duration-200">FAQs</Link></li>
           </ul>
