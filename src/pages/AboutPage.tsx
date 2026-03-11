@@ -36,7 +36,7 @@ const AboutPage = () => (
             <span className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
               <Heart className="w-5 h-5 text-primary" />
             </span>
-            <h2 className="font-display font-bold text-xl md:text-2xl text-foreground">
+            <h2 className="font-display font-bold text-lg md:text-xl text-foreground">
               Bringing Healthcare Home
             </h2>
           </div>
