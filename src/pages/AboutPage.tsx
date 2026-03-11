@@ -91,7 +91,7 @@ const AboutPage = () => (
           <h2 className="font-display font-bold text-lg md:text-xl text-foreground mb-4">
             Why We Exist
           </h2>
-          <p className="text-muted-foreground text-sm md:text-[0.938rem] leading-relaxed">
+          <p className="text-muted-foreground text-sm leading-relaxed">
             Healthcare is evolving—and we're here to lead that transformation. Long queues, travel challenges, and limited specialist access shouldn't be barriers to wellness. Aceso Health Solutions was created to close that gap by delivering healthcare with the same standards you'd expect in a hospital, but with the ease of digital access.
           </p>
         </CardContent>
