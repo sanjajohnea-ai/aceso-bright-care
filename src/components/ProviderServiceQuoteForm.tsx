@@ -23,13 +23,13 @@ const ProviderServiceQuoteForm = ({ title, description }: ProviderServiceQuoteFo
   const [smsConsent, setSmsConsent] = useState(false);
 
   return (
-    <section className="py-16 md:py-24 bg-primary/5">
-      <div className="container max-w-2xl">
-        <div className="text-center mb-10">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+    <section className="py-12 md:py-20 bg-primary/5">
+      <div className="container px-5 max-w-2xl">
+        <div className="text-center mb-8">
+          <h2 className="font-display text-2xl md:text-4xl font-extrabold text-foreground tracking-tight mb-3">
             {title}
           </h2>
-          <p className="text-muted-foreground">{description}</p>
+          <p className="text-muted-foreground text-sm md:text-base">{description}</p>
         </div>
 
         <form
