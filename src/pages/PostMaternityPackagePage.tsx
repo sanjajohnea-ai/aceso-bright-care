@@ -48,7 +48,7 @@ const PostMaternityPackagePage = () => {
           <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
             <p className="text-xs font-semibold text-foreground uppercase tracking-wider mb-1">Duration</p>
             <p className="text-sm text-muted-foreground">3 consecutive days</p>
-            <p className="text-sm text-muted-foreground">Up to 3 hours per visit per day</p>
+            <p className="text-sm text-muted-foreground">Up to 6 hours per visit per day</p>
           </div>
         </div>
 

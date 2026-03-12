@@ -23,7 +23,7 @@ const packages = [
     subtitle: "New Mom & Baby Package",
     features: [
       "Professional lactation guidance",
-      "Daily home nurse visits",
+      "3-day home nurse visits (6 hrs/visit)",
       "Pediatric telemedicine follow-ups",
       "Newborn care & nutrition support",
     ],
