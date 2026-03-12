@@ -4,7 +4,9 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import acesoLogo from "@/assets/aceso-logo.png";
 
-const servicesMenu = {
+type MenuItem = { label: string; href: string; external?: boolean };
+
+const servicesMenu: Record<string, MenuItem[]> = {
   patients: [
     { label: "Doctor Consultations", href: "/#core-services" },
     { label: "Pharmacy Orders", href: "/#core-services" },
