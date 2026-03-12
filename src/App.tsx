@@ -13,6 +13,9 @@ import AboutPage from "./pages/AboutPage";
 import PostSurgeryPackagePage from "./pages/PostSurgeryPackagePage";
 import PostMaternityPackagePage from "./pages/PostMaternityPackagePage";
 import NotFound from "./pages/NotFound";
+import MedicalBillingPage from "./pages/MedicalBillingPage";
+import RemoteAdminPage from "./pages/RemoteAdminPage";
+import CredentialingPage from "./pages/CredentialingPage";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +41,9 @@ const App = () => (
           <Route path="/about" element={<AboutPage />} />
           <Route path="/packages/post-surgery" element={<PostSurgeryPackagePage />} />
           <Route path="/packages/post-maternity" element={<PostMaternityPackagePage />} />
+          <Route path="/services/medical-billing" element={<MedicalBillingPage />} />
+          <Route path="/services/remote-admin" element={<RemoteAdminPage />} />
+          <Route path="/services/credentialing" element={<CredentialingPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
