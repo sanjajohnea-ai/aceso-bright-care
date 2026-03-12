@@ -13,6 +13,9 @@ import AboutPage from "./pages/AboutPage";
 import PostSurgeryPackagePage from "./pages/PostSurgeryPackagePage";
 import PostMaternityPackagePage from "./pages/PostMaternityPackagePage";
 import NotFound from "./pages/NotFound";
+import MedicalBillingPage from "./pages/MedicalBillingPage";
+import RemoteAdminPage from "./pages/RemoteAdminPage";
+import CredentialingPage from "./pages/CredentialingPage";
 
 const queryClient = new QueryClient();
 
