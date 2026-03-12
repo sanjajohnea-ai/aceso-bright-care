@@ -9,7 +9,7 @@ const packages = [
     title: "Post-Surgery Care",
     subtitle: "Recovery Support Package",
     features: [
-      "3-day clinical nurse support",
+      "3-day clinical nurse support (6 hrs/visit)",
       "Doctor consultation session",
       "Nutrition consultation & meal planning",
       "Wound management & care guidance",
@@ -23,7 +23,7 @@ const packages = [
     subtitle: "New Mom & Baby Package",
     features: [
       "Professional lactation guidance",
-      "Daily home nurse visits",
+      "3-day home nurse visits (6 hrs/visit)",
       "Pediatric telemedicine follow-ups",
       "Newborn care & nutrition support",
     ],
