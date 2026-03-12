@@ -9,7 +9,7 @@ const packages = [
     title: "Post-Surgery Care",
     subtitle: "Recovery Support Package",
     features: [
-      "3-day clinical nurse support",
+      "3-day clinical nurse support (6 hrs/visit)",
       "Doctor consultation session",
       "Nutrition consultation & meal planning",
       "Wound management & care guidance",
