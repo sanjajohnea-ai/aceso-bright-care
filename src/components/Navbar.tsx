@@ -12,9 +12,9 @@ const servicesMenu = {
     { label: "Home Nursing", href: "/#core-services" },
   ],
   providers: [
-    { label: "Medical Billing", href: "https://acesohealth.co.ke/services/medical-billing", external: true },
-    { label: "Remote Admin Support", href: "https://acesohealth.co.ke/services/remote-admin", external: true },
-    { label: "Credentialing Services", href: "https://acesohealth.co.ke/services/credentialing", external: true },
+    { label: "Medical Billing", href: "/services/medical-billing" },
+    { label: "Remote Admin Support", href: "/services/remote-admin" },
+    { label: "Credentialing Services", href: "/services/credentialing" },
   ],
   hospitals: [
     { label: "Hospital Management Systems", href: "https://acesohealth.co.ke/services/hospital-solutions", external: true },
