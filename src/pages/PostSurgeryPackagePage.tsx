@@ -24,7 +24,7 @@ const PostSurgeryPackagePage = () => {
   return (
     <LegalPageLayout
       title="Post-Surgery Recovery Package"
-      subtitle="Scope of Services Confirmation"
+      
     >
       <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
         Please review the scope of services included in this package before confirming your booking.
@@ -218,7 +218,7 @@ const PostSurgeryPackagePage = () => {
             Cancel
           </Button>
           <Button variant="hero" className="rounded-xl" disabled={!allChecked}>
-            Proceed to Booking / Payment
+            Proceed to Booking
           </Button>
         </div>
       </motion.div>

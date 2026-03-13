@@ -37,7 +37,7 @@ export const faqs = [
   },
   {
     question: "Is the fee refundable?",
-    answer: "Fees are non-refundable once your case is assigned to a specialist. Cancellation before assignment may be eligible for a refund, per our [Cancellation & Refund policy](/cancellation-policy).",
+    answer: "Refund eligibility depends on when the cancellation is requested. Please refer to our [Cancellation & Refund Policy](/cancellation-policy) for full details, as different service timelines and stages may have specific cancellation fees and refund conditions.",
   },
 ];
 

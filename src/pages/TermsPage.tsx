@@ -7,16 +7,16 @@ const TermsPage = () => {
   const [activeTab, setActiveTab] = useState<"patients" | "providers">("patients");
 
   return (
-    <LegalPageLayout title="Terms & Conditions">
+    <LegalPageLayout title="Terms of Service">
       {/* Toggle Buttons */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-8">
+      <div className="flex flex-row gap-3 mb-8">
         <Button
           variant={activeTab === "patients" ? "default" : "outline"}
           size="lg"
           className="flex-1"
           onClick={() => setActiveTab("patients")}
         >
-          Terms for Patients
+          For Patients
         </Button>
         <Button
           variant={activeTab === "providers" ? "default" : "outline"}
@@ -24,7 +24,7 @@ const TermsPage = () => {
           className="flex-1"
           onClick={() => setActiveTab("providers")}
         >
-          Terms for Healthcare Providers
+          For Providers
         </Button>
       </div>
 

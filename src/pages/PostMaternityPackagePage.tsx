@@ -24,7 +24,7 @@ const PostMaternityPackagePage = () => {
   return (
     <LegalPageLayout
       title="Post-Maternity Care Package"
-      subtitle="Scope of Services Confirmation"
+      
     >
       <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
         Please review the scope of services included in this package before confirming your booking.
@@ -283,7 +283,7 @@ const PostMaternityPackagePage = () => {
             Cancel
           </Button>
           <Button variant="hero" className="rounded-xl" disabled={!allChecked}>
-            Proceed to Booking / Payment
+            Proceed to Booking
           </Button>
         </div>
       </motion.div>
