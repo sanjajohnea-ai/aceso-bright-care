@@ -14,7 +14,7 @@ const packages = [
       "Nutrition consultation & meal planning",
       "Wound management & care guidance",
     ],
-    price: "12,500",
+    price: "26,000",
     link: "/packages/post-surgery",
   },
   {
@@ -27,7 +27,7 @@ const packages = [
       "Pediatric telemedicine follow-ups",
       "Newborn care & nutrition support",
     ],
-    price: "10,800",
+    price: "25,000",
     featured: true,
     link: "/packages/post-maternity",
   },
@@ -41,7 +41,8 @@ const packages = [
       "Nutrition consultation & planning",
       "Health monitoring & follow-up",
     ],
-    price: "7,500",
+    price: "20,000",
+    link: "/packages/wellness",
   },
 ];
 

@@ -3,15 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-const counties = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret"];
 
 interface ProviderServiceQuoteFormProps {
   title: string;
@@ -64,19 +55,8 @@ const ProviderServiceQuoteForm = ({ title, description }: ProviderServiceQuoteFo
           </div>
 
           <div className="space-y-2">
-            <Label>Select County</Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select County" />
-              </SelectTrigger>
-              <SelectContent>
-                {counties.map((county) => (
-                  <SelectItem key={county} value={county.toLowerCase()}>
-                    {county}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <Label htmlFor="location">Location</Label>
+            <Input id="location" placeholder="Location" />
           </div>
 
           <div className="flex items-start gap-2">

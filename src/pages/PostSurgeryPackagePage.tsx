@@ -217,8 +217,8 @@ const PostSurgeryPackagePage = () => {
           <Button variant="outline" className="rounded-xl" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-          <Button variant="hero" className="rounded-xl" disabled={!allChecked}>
-            Proceed to Booking
+          <Button variant="hero" className="rounded-xl" disabled={!allChecked} asChild>
+            <a href="/booking/post-surgery">Proceed to Booking</a>
           </Button>
         </div>
       </motion.div>
