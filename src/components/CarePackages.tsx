@@ -14,7 +14,7 @@ const packages = [
       "Nutrition consultation & meal planning",
       "Wound management & care guidance",
     ],
-    price: "12,500",
+    price: "26,000",
     link: "/packages/post-surgery",
   },
   {
