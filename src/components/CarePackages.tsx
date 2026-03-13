@@ -27,7 +27,7 @@ const packages = [
       "Pediatric telemedicine follow-ups",
       "Newborn care & nutrition support",
     ],
-    price: "10,800",
+    price: "25,000",
     featured: true,
     link: "/packages/post-maternity",
   },
