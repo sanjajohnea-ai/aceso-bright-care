@@ -41,7 +41,8 @@ const packages = [
       "Nutrition consultation & planning",
       "Health monitoring & follow-up",
     ],
-    price: "7,500",
+    price: "20,000",
+    link: "/packages/wellness",
   },
 ];
 

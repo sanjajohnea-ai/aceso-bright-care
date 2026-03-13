@@ -64,19 +64,8 @@ const ProviderServiceQuoteForm = ({ title, description }: ProviderServiceQuoteFo
           </div>
 
           <div className="space-y-2">
-            <Label>Select County</Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select County" />
-              </SelectTrigger>
-              <SelectContent>
-                {counties.map((county) => (
-                  <SelectItem key={county} value={county.toLowerCase()}>
-                    {county}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <Label htmlFor="location">Location</Label>
+            <Input id="location" placeholder="Location" />
           </div>
 
           <div className="flex items-start gap-2">

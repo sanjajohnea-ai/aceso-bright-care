@@ -19,7 +19,7 @@ const servicesMenu: Record<string, MenuItem[]> = {
     { label: "Credentialing Services", href: "/services/credentialing" },
   ],
   hospitals: [
-    { label: "Hospital Management Systems", href: "https://acesohealth.co.ke/services/hospital-solutions", external: true },
+    { label: "Hospital Management Systems", href: "/services/hospital-solutions" },
   ],
 };
 
