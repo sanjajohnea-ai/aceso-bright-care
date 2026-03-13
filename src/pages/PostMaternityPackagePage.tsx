@@ -283,7 +283,7 @@ const PostMaternityPackagePage = () => {
             Cancel
           </Button>
           <Button variant="hero" className="rounded-xl" disabled={!allChecked}>
-            Proceed to Booking / Payment
+            Proceed to Booking
           </Button>
         </div>
       </motion.div>
