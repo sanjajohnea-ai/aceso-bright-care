@@ -5,6 +5,7 @@ import LegalSection from "@/components/LegalSection";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { AlertCircle } from "lucide-react";
 
 const PostMaternityPackagePage = () => {
   const navigate = useNavigate();
@@ -15,17 +16,31 @@ const PostMaternityPackagePage = () => {
     informedFees: false,
     finalConfirm: false,
   });
+  const [showError, setShowError] = useState(false);
 
   const allChecked = Object.values(checks).every(Boolean);
 
   const toggle = (key: keyof typeof checks) =>
     setChecks((prev) => ({ ...prev, [key]: !prev[key] }));
 
+  const handleProceed = () => {
+    if (!allChecked) {
+      setShowError(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    navigate("/booking/post-maternity");
+  };
+
   return (
-    <LegalPageLayout
-      title="Post-Maternity Care Package"
-      
-    >
+    <LegalPageLayout title="Post-Maternity Care Package">
+      {showError && !allChecked && (
+        <div className="flex items-start gap-3 p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+          <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+          You must agree to all service scope and consent checkboxes before continuing.
+        </div>
+      )}
+
       <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
         Please review the scope of services included in this package before confirming your booking.
       </p>
@@ -282,8 +297,8 @@ const PostMaternityPackagePage = () => {
           <Button variant="outline" className="rounded-xl" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-          <Button variant="hero" className="rounded-xl" disabled={!allChecked} asChild>
-            <a href="/booking/post-maternity">Proceed to Booking</a>
+          <Button variant="hero" className="rounded-xl" onClick={handleProceed}>
+            Proceed to Booking
           </Button>
         </div>
       </motion.div>

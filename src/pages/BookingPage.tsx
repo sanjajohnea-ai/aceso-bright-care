@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
+import { Info } from "lucide-react";
 
 const packageNames: Record<string, { title: string; price: string }> = {
   "post-surgery": { title: "Post-Surgery Recovery Package", price: "KES 26,000" },
@@ -46,34 +47,44 @@ const BookingPage = () => {
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
+                  <Label htmlFor="firstName">First Name <span className="text-destructive">*</span></Label>
                   <Input
                     id="firstName"
                     placeholder="First Name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName">Last Name</Label>
+                  <Label htmlFor="lastName">Last Name <span className="text-destructive">*</span></Label>
                   <Input
                     id="lastName"
                     placeholder="Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
+                    required
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
+                <Label htmlFor="phone">Phone Number <span className="text-destructive">*</span></Label>
                 <Input
                   id="phone"
                   type="tel"
                   placeholder="Phone Number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
+              </div>
+
+              <div className="flex items-start gap-2.5 p-3 rounded-xl bg-primary/5 border border-primary/10">
+                <Info className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                <p className="text-sm text-muted-foreground leading-snug">
+                  Our team will reach out within one hour to assist with scheduling your care package booking.
+                </p>
               </div>
 
               <Button
@@ -81,9 +92,9 @@ const BookingPage = () => {
                 variant="hero"
                 size="lg"
                 className="w-full rounded-full text-base"
-                disabled={!firstName || !lastName || !phone}
+                disabled={!firstName.trim() || !lastName.trim() || !phone.trim()}
               >
-                Proceed to Pay
+                Make Payment
               </Button>
 
               <Button

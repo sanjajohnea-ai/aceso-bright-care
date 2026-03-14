@@ -5,6 +5,7 @@ import LegalSection from "@/components/LegalSection";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { AlertCircle } from "lucide-react";
 
 const WellnessPackagePage = () => {
   const navigate = useNavigate();
@@ -15,14 +16,31 @@ const WellnessPackagePage = () => {
     informedFees: false,
     finalConfirm: false,
   });
+  const [showError, setShowError] = useState(false);
 
   const allChecked = Object.values(checks).every(Boolean);
 
   const toggle = (key: keyof typeof checks) =>
     setChecks((prev) => ({ ...prev, [key]: !prev[key] }));
 
+  const handleProceed = () => {
+    if (!allChecked) {
+      setShowError(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    navigate("/booking/wellness");
+  };
+
   return (
     <LegalPageLayout title="Wellness & Preventive Annual Healthcare Package">
+      {showError && !allChecked && (
+        <div className="flex items-start gap-3 p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+          <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+          You must agree to all service scope and consent checkboxes before continuing.
+        </div>
+      )}
+
       <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
         The Basic Wellness and Preventive Annual Healthcare Package includes the following routine screening tests and wellness services to support early detection of common health conditions and promote overall well-being.
       </p>
@@ -166,8 +184,8 @@ const WellnessPackagePage = () => {
           <Button variant="outline" className="rounded-xl" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-          <Button variant="hero" className="rounded-xl" disabled={!allChecked} asChild>
-            <a href="/booking/wellness">Proceed to Booking</a>
+          <Button variant="hero" className="rounded-xl" onClick={handleProceed}>
+            Proceed to Booking
           </Button>
         </div>
       </motion.div>
