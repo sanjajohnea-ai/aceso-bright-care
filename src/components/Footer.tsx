@@ -1,6 +1,8 @@
 import { Mail, Phone, MapPin, Facebook, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import acesoLogo from "@/assets/aceso-logo.png";
+import dataControllerBadge from "@/assets/data-controller-logo.png.asset.json";
+import registrationCertificate from "@/assets/aceso-registration-certificate.pdf.asset.json";
 
 const Footer = () => (
   <footer id="footer" className="bg-foreground text-primary-foreground/60 py-10 md:py-14">
@@ -60,8 +62,26 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="border-t border-primary-foreground/10 pt-6 md:pt-8 text-center text-sm">
-        © {new Date().getFullYear()} Aceso Health Solutions. All rights reserved.
+      <div className="border-t border-primary-foreground/10 pt-6 md:pt-8 flex flex-col items-center gap-5">
+        <a
+          href={registrationCertificate.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 px-4 py-2.5 rounded-lg bg-primary-foreground/5 hover:bg-primary-foreground/10 border border-primary-foreground/10 transition-colors duration-200 text-primary-foreground/90 hover:text-primary-foreground text-xs sm:text-sm text-center"
+          aria-label="View Aceso Health Solutions Data Controller Registration Certificate"
+        >
+          <span className="font-medium">
+            Certified by the Office of the Data Protection Commissioner
+          </span>
+          <img
+            src={dataControllerBadge.url}
+            alt="Office of the Data Protection Commissioner, Republic of Kenya"
+            className="h-10 sm:h-12 w-auto shrink-0 bg-white rounded p-1"
+          />
+        </a>
+        <div className="text-center text-sm w-full">
+          © {new Date().getFullYear()} Aceso Health Solutions. All rights reserved.
+        </div>
       </div>
     </div>
   </footer>
