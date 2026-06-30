@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { openAuthModal } from "@/components/AuthModal";
 
 const CTASection = () => (
   <section id="cta" className="py-16 md:py-24">
@@ -36,7 +37,7 @@ const CTASection = () => (
           <p className="text-primary-foreground/70 max-w-lg mx-auto mb-10 text-lg leading-relaxed">
             Better healthcare starts here. Sign up today and let Aceso handle the rest.
           </p>
-          <Button variant="hero" size="lg" className="rounded-full px-10 gap-2 group">
+          <Button variant="hero" size="lg" className="rounded-full px-10 gap-2 group" onClick={() => openAuthModal("signup")}>
             Get Started <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>

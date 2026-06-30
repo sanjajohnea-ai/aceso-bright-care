@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import AuthModal from "./components/AuthModal";
 
 const FAQPage = lazy(() => import("./pages/FAQPage"));
 const TermsPage = lazy(() => import("./pages/TermsPage"));
@@ -62,6 +63,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        <AuthModal />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
