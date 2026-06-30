@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import acesoLogo from "@/assets/aceso-logo.png";
+import { openAuthModal } from "@/components/AuthModal";
 
 type MenuItem = { label: string; href: string; external?: boolean };
 
@@ -140,10 +141,10 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <Button variant="outline" size="sm" className="ml-2 rounded-full px-5" asChild>
-            <a href="/sign-in">Sign In</a>
+          <Button variant="outline" size="sm" className="ml-2 rounded-full px-5" onClick={() => openAuthModal("signin")}>
+            Sign In
           </Button>
-          <Button size="sm" className="ml-2 rounded-full px-6">Get Started</Button>
+          <Button size="sm" className="ml-2 rounded-full px-6" onClick={() => openAuthModal("signup")}>Get Started</Button>
         </div>
 
         {/* Mobile toggle */}
@@ -222,10 +223,10 @@ const Navbar = () => {
                   {l.label}
                 </a>
               ))}
-              <Button variant="outline" size="sm" className="w-fit mt-2 rounded-full px-5" asChild>
-                <a href="/sign-in">Sign In</a>
+              <Button variant="outline" size="sm" className="w-fit mt-2 rounded-full px-5" onClick={() => { setOpen(false); openAuthModal("signin"); }}>
+                Sign In
               </Button>
-              <Button size="sm" className="w-fit mt-1 rounded-full px-6">Get Started</Button>
+              <Button size="sm" className="w-fit mt-1 rounded-full px-6" onClick={() => { setOpen(false); openAuthModal("signup"); }}>Get Started</Button>
             </div>
           </motion.div>
         )}

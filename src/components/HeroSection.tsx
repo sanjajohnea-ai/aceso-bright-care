@@ -67,11 +67,9 @@ const HeroSection = () => {
             role="group"
             aria-label="Get started actions"
           >
-            <Button variant="hero" size="lg" className="rounded-full px-6 md:px-8 gap-2 group text-sm md:text-base" asChild>
-              <a href="#core-services">
-                Get Started
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </a>
+            <Button variant="hero" size="lg" className="rounded-full px-6 md:px-8 gap-2 group text-sm md:text-base" onClick={() => openAuthModal("signup")}>
+              Get Started
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Button>
           </motion.div>
         </div>
