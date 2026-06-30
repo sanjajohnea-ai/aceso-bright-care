@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-healthcare.jpg";
+import { openAuthModal } from "@/components/AuthModal";
 
 const HeroSection = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
