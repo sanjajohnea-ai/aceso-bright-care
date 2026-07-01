@@ -87,7 +87,15 @@ const AuthModal = () => {
     setEmailVerified(false);
     setCodeInput("");
     setSentCode("");
+    setCodeExpiresAt(null);
   }, [email]);
+
+  // Ticking clock for countdown
+  useEffect(() => {
+    if (!codeSent || emailVerified) return;
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, [codeSent, emailVerified]);
 
   const close = () => {
     setOpen(false);
@@ -105,17 +113,33 @@ const AuthModal = () => {
       setSentCode(code);
       setCodeSent(true);
       setSending(false);
-      toast.success(`Verification code sent to ${email}`, { description: `For demo: your code is ${code}` });
+      setCodeInput("");
+      const expiry = Date.now() + CODE_TTL_MS;
+      setCodeExpiresAt(expiry);
+      setNow(Date.now());
+      toast.success(`Verification code sent to ${email}`, { description: `For demo: your code is ${code} (expires in 10 min)` });
     }, 700);
   };
 
   const verifyCode = () => {
+    if (codeExpired) {
+      setError("This verification code has expired. Please resend a new one.");
+      return;
+    }
     if (codeInput.trim() === sentCode && sentCode.length === 6) {
       setEmailVerified(true);
+      setCodeExpiresAt(null);
       toast.success("Email verified");
     } else {
       setError("Incorrect verification code. Please try again.");
     }
+  };
+
+  const validatePassword = (p: string): string | null => {
+    if (p.length < 8) return "Password must be at least 8 characters.";
+    if (!/[A-Z]/.test(p)) return "Password must contain at least one uppercase letter.";
+    if (!/[0-9]/.test(p)) return "Password must contain at least one number.";
+    return null;
   };
 
   const handleSignup = (e: React.FormEvent) => {
@@ -132,7 +156,8 @@ const AuthModal = () => {
       setError("Please verify your email address before continuing.");
       return;
     }
-    if (pw.length < 6) { setError("Password must be at least 6 characters."); return; }
+    const pwErr = validatePassword(pw);
+    if (pwErr) { setError(pwErr); return; }
     if (pw !== pw2) { setError("Passwords do not match."); return; }
     if (!agree) { setError("Please agree to the Terms and Privacy Policy."); return; }
 
@@ -143,6 +168,7 @@ const AuthModal = () => {
     setFname(""); setLname(""); setEmail(""); setDob(""); setPhone("");
     setPw(""); setPw2(""); setAgree(false); setError(null);
     setCodeSent(false); setEmailVerified(false); setCodeInput(""); setSentCode("");
+    setCodeExpiresAt(null);
   };
 
   return (
