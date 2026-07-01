@@ -110,6 +110,14 @@ const AuthModal = () => {
     return () => clearInterval(id);
   }, [codeSent, emailVerified]);
 
+  // Notify once when the code expires
+  useEffect(() => {
+    if (codeExpired) {
+      toast.error("Verification code expired", { description: "Please request a new code to continue." });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [codeExpired]);
+
   const close = () => {
     setOpen(false);
     setSubmitted(false);
