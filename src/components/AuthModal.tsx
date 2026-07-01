@@ -374,6 +374,11 @@ const AuthModal = () => {
                               {verifying ? "Verifying…" : "Verify"}
                             </Button>
                           </div>
+                          {codeExpired && (
+                            <div className="p-2 rounded-md bg-destructive/10 border border-destructive/30 text-xs text-destructive">
+                              Your verification code has expired. Please request a new one.
+                            </div>
+                          )}
                           <div className="flex items-center justify-between text-xs">
                             <span className="text-muted-foreground">
                               Status:{" "}
@@ -385,9 +390,9 @@ const AuthModal = () => {
                               type="button"
                               onClick={sendCode}
                               disabled={sending}
-                              className="text-primary font-semibold hover:underline disabled:opacity-50"
+                              className={`font-semibold hover:underline disabled:opacity-50 ${codeExpired ? "text-destructive" : "text-primary"}`}
                             >
-                              Resend code
+                              {sending ? "Sending…" : codeExpired ? "Request new code" : "Resend code"}
                             </button>
                           </div>
                         </div>
