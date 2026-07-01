@@ -414,6 +414,17 @@ const AuthModal = () => {
                           {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                       </div>
+                      <ul className="text-xs space-y-0.5 mt-1">
+                        <li className={pw.length >= 8 ? "text-primary" : "text-muted-foreground"}>
+                          {pw.length >= 8 ? "✓" : "•"} At least 8 characters
+                        </li>
+                        <li className={/[A-Z]/.test(pw) ? "text-primary" : "text-muted-foreground"}>
+                          {/[A-Z]/.test(pw) ? "✓" : "•"} One uppercase letter
+                        </li>
+                        <li className={/[0-9]/.test(pw) ? "text-primary" : "text-muted-foreground"}>
+                          {/[0-9]/.test(pw) ? "✓" : "•"} One number
+                        </li>
+                      </ul>
                     </div>
 
                     <div className="space-y-1.5">
