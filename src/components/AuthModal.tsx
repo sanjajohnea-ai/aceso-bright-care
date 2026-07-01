@@ -474,11 +474,22 @@ const AuthModal = () => {
                       <Label htmlFor="pw2">Confirm Password <span className="text-destructive">*</span></Label>
                       <div className="relative">
                         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input id="pw2" type={showPw2 ? "text" : "password"} value={pw2} onChange={(e) => setPw2(e.target.value)} placeholder="Confirm your password" className="pl-9 pr-9" required />
+                        <Input
+                          id="pw2"
+                          type={showPw2 ? "text" : "password"}
+                          value={pw2}
+                          onChange={(e) => setPw2(e.target.value)}
+                          onBlur={() => setPw2Touched(true)}
+                          placeholder="Confirm your password"
+                          className={`pl-9 pr-9 ${pw2Error ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                          aria-invalid={!!pw2Error}
+                          required
+                        />
                         <button type="button" onClick={() => setShowPw2(!showPw2)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                           {showPw2 ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                       </div>
+                      {pw2Error && <p className="text-xs text-destructive mt-1">{pw2Error}</p>}
                     </div>
 
                     <label className="flex items-start gap-2 text-sm text-muted-foreground">
