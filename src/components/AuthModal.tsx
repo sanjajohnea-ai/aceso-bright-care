@@ -135,17 +135,24 @@ const AuthModal = () => {
   };
 
   const verifyCode = () => {
+    setError(null);
     if (codeExpired) {
-      setError("This verification code has expired. Please resend a new one.");
+      toast.error("Verification code expired", { description: "Please request a new code." });
+      setError("This verification code has expired. Please click 'Resend code' to receive a new one.");
       return;
     }
-    if (codeInput.trim() === sentCode && sentCode.length === 6) {
-      setEmailVerified(true);
-      setCodeExpiresAt(null);
-      toast.success("Email verified");
-    } else {
-      setError("Incorrect verification code. Please try again.");
-    }
+    setVerifying(true);
+    setTimeout(() => {
+      if (codeInput.trim() === sentCode && sentCode.length === 6) {
+        setEmailVerified(true);
+        setCodeExpiresAt(null);
+        toast.success("Email verified successfully");
+      } else {
+        setError("Incorrect verification code. Please check and try again.");
+        toast.error("Incorrect code");
+      }
+      setVerifying(false);
+    }, 500);
   };
 
 
