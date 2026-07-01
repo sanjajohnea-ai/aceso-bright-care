@@ -63,6 +63,12 @@ const AuthModal = () => {
   const codeExpired = codeSent && !emailVerified && secondsLeft === 0;
 
   const [submitted, setSubmitted] = useState(false);
+  const [verifying, setVerifying] = useState(false);
+  const [pwTouched, setPwTouched] = useState(false);
+  const [pw2Touched, setPw2Touched] = useState(false);
+
+  const pwError = pwTouched ? validatePassword(pw) : null;
+  const pw2Error = pw2Touched && pw2 && pw !== pw2 ? "Passwords do not match." : null;
 
   useEffect(() => {
     const handler = (e: Event) => {
