@@ -63,6 +63,19 @@ const AuthModal = () => {
   const codeExpired = codeSent && !emailVerified && secondsLeft === 0;
 
   const [submitted, setSubmitted] = useState(false);
+  const [verifying, setVerifying] = useState(false);
+  const [pwTouched, setPwTouched] = useState(false);
+  const [pw2Touched, setPw2Touched] = useState(false);
+
+  const validatePassword = (p: string): string | null => {
+    if (p.length < 8) return "Password must be at least 8 characters.";
+    if (!/[A-Z]/.test(p)) return "Password must contain at least one uppercase letter.";
+    if (!/[0-9]/.test(p)) return "Password must contain at least one number.";
+    return null;
+  };
+
+  const pwError = pwTouched && pw ? validatePassword(pw) : null;
+  const pw2Error = pw2Touched && pw2 && pw !== pw2 ? "Passwords do not match." : null;
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -97,6 +110,14 @@ const AuthModal = () => {
     return () => clearInterval(id);
   }, [codeSent, emailVerified]);
 
+  // Notify once when the code expires
+  useEffect(() => {
+    if (codeExpired) {
+      toast.error("Verification code expired", { description: "Please request a new code to continue." });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [codeExpired]);
+
   const close = () => {
     setOpen(false);
     setSubmitted(false);
@@ -122,25 +143,26 @@ const AuthModal = () => {
   };
 
   const verifyCode = () => {
+    setError(null);
     if (codeExpired) {
-      setError("This verification code has expired. Please resend a new one.");
+      toast.error("Verification code expired", { description: "Please request a new code." });
+      setError("This verification code has expired. Please click 'Resend code' to receive a new one.");
       return;
     }
-    if (codeInput.trim() === sentCode && sentCode.length === 6) {
-      setEmailVerified(true);
-      setCodeExpiresAt(null);
-      toast.success("Email verified");
-    } else {
-      setError("Incorrect verification code. Please try again.");
-    }
+    setVerifying(true);
+    setTimeout(() => {
+      if (codeInput.trim() === sentCode && sentCode.length === 6) {
+        setEmailVerified(true);
+        setCodeExpiresAt(null);
+        toast.success("Email verified successfully");
+      } else {
+        setError("Incorrect verification code. Please check and try again.");
+        toast.error("Incorrect code");
+      }
+      setVerifying(false);
+    }, 500);
   };
 
-  const validatePassword = (p: string): string | null => {
-    if (p.length < 8) return "Password must be at least 8 characters.";
-    if (!/[A-Z]/.test(p)) return "Password must contain at least one uppercase letter.";
-    if (!/[0-9]/.test(p)) return "Password must contain at least one number.";
-    return null;
-  };
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
@@ -351,10 +373,20 @@ const AuthModal = () => {
                               disabled={codeExpired}
                               className="flex-1 tracking-widest text-center font-mono"
                             />
-                            <Button type="button" onClick={verifyCode} disabled={codeInput.length !== 6 || codeExpired}>
-                              Verify
+                            <Button
+                              type="button"
+                              onClick={verifyCode}
+                              disabled={codeInput.length !== 6 || codeExpired || verifying}
+                              className="min-w-[90px]"
+                            >
+                              {verifying ? "Verifying…" : "Verify"}
                             </Button>
                           </div>
+                          {codeExpired && (
+                            <div className="p-2 rounded-md bg-destructive/10 border border-destructive/30 text-xs text-destructive">
+                              Your verification code has expired. Please request a new one.
+                            </div>
+                          )}
                           <div className="flex items-center justify-between text-xs">
                             <span className="text-muted-foreground">
                               Status:{" "}
@@ -366,9 +398,9 @@ const AuthModal = () => {
                               type="button"
                               onClick={sendCode}
                               disabled={sending}
-                              className="text-primary font-semibold hover:underline disabled:opacity-50"
+                              className={`font-semibold hover:underline disabled:opacity-50 ${codeExpired ? "text-destructive" : "text-primary"}`}
                             >
-                              Resend code
+                              {sending ? "Sending…" : codeExpired ? "Request new code" : "Resend code"}
                             </button>
                           </div>
                         </div>
@@ -409,11 +441,22 @@ const AuthModal = () => {
                       <Label htmlFor="pw">Password <span className="text-destructive">*</span></Label>
                       <div className="relative">
                         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input id="pw" type={showPw ? "text" : "password"} value={pw} onChange={(e) => setPw(e.target.value)} placeholder="Create a password" className="pl-9 pr-9" required />
+                        <Input
+                          id="pw"
+                          type={showPw ? "text" : "password"}
+                          value={pw}
+                          onChange={(e) => setPw(e.target.value)}
+                          onBlur={() => setPwTouched(true)}
+                          placeholder="Create a password"
+                          className={`pl-9 pr-9 ${pwError ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                          aria-invalid={!!pwError}
+                          required
+                        />
                         <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                           {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                       </div>
+                      {pwError && <p className="text-xs text-destructive mt-1">{pwError}</p>}
                       <ul className="text-xs space-y-0.5 mt-1">
                         <li className={pw.length >= 8 ? "text-primary" : "text-muted-foreground"}>
                           {pw.length >= 8 ? "✓" : "•"} At least 8 characters
@@ -431,11 +474,22 @@ const AuthModal = () => {
                       <Label htmlFor="pw2">Confirm Password <span className="text-destructive">*</span></Label>
                       <div className="relative">
                         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input id="pw2" type={showPw2 ? "text" : "password"} value={pw2} onChange={(e) => setPw2(e.target.value)} placeholder="Confirm your password" className="pl-9 pr-9" required />
+                        <Input
+                          id="pw2"
+                          type={showPw2 ? "text" : "password"}
+                          value={pw2}
+                          onChange={(e) => setPw2(e.target.value)}
+                          onBlur={() => setPw2Touched(true)}
+                          placeholder="Confirm your password"
+                          className={`pl-9 pr-9 ${pw2Error ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                          aria-invalid={!!pw2Error}
+                          required
+                        />
                         <button type="button" onClick={() => setShowPw2(!showPw2)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                           {showPw2 ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                       </div>
+                      {pw2Error && <p className="text-xs text-destructive mt-1">{pw2Error}</p>}
                     </div>
 
                     <label className="flex items-start gap-2 text-sm text-muted-foreground">
