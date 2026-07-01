@@ -324,16 +324,23 @@ const AuthModal = () => {
                             disabled={sending || !email}
                             className="whitespace-nowrap"
                           >
-                            {sending ? "Sending..." : codeSent ? "Resend" : "Send code"}
+                            {sending ? "Sending..." : codeSent ? "Resend code" : "Send code"}
                           </Button>
                         )}
                       </div>
                       {codeSent && !emailVerified && (
                         <div className="mt-2 p-3 rounded-lg bg-primary/5 border border-primary/20 space-y-2">
-                          <p className="text-xs text-muted-foreground flex items-center gap-1.5">
-                            <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-                            Enter the 6-digit code sent to your email
-                          </p>
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+                              <ShieldCheck className="w-3.5 h-3.5 text-primary" />
+                              Enter the 6-digit code sent to your email
+                            </p>
+                            <span className={`text-xs font-mono font-semibold ${codeExpired ? "text-destructive" : "text-primary"}`}>
+                              {codeExpired
+                                ? "Expired"
+                                : `${Math.floor(secondsLeft / 60)}:${String(secondsLeft % 60).padStart(2, "0")}`}
+                            </span>
+                          </div>
                           <div className="flex gap-2">
                             <Input
                               value={codeInput}
@@ -341,17 +348,34 @@ const AuthModal = () => {
                               placeholder="000000"
                               inputMode="numeric"
                               maxLength={6}
+                              disabled={codeExpired}
                               className="flex-1 tracking-widest text-center font-mono"
                             />
-                            <Button type="button" onClick={verifyCode} disabled={codeInput.length !== 6}>
+                            <Button type="button" onClick={verifyCode} disabled={codeInput.length !== 6 || codeExpired}>
                               Verify
                             </Button>
+                          </div>
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-muted-foreground">
+                              Status:{" "}
+                              <span className={codeExpired ? "text-destructive font-medium" : "text-primary font-medium"}>
+                                {codeExpired ? "Code expired" : "Awaiting verification"}
+                              </span>
+                            </span>
+                            <button
+                              type="button"
+                              onClick={sendCode}
+                              disabled={sending}
+                              className="text-primary font-semibold hover:underline disabled:opacity-50"
+                            >
+                              Resend code
+                            </button>
                           </div>
                         </div>
                       )}
                       {emailVerified && (
                         <p className="text-xs text-primary font-medium flex items-center gap-1">
-                          <CheckCircle2 className="w-3.5 h-3.5" /> Email verified
+                          <CheckCircle2 className="w-3.5 h-3.5" /> Email verified successfully
                         </p>
                       )}
                     </div>
