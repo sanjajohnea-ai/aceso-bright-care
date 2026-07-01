@@ -441,11 +441,22 @@ const AuthModal = () => {
                       <Label htmlFor="pw">Password <span className="text-destructive">*</span></Label>
                       <div className="relative">
                         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input id="pw" type={showPw ? "text" : "password"} value={pw} onChange={(e) => setPw(e.target.value)} placeholder="Create a password" className="pl-9 pr-9" required />
+                        <Input
+                          id="pw"
+                          type={showPw ? "text" : "password"}
+                          value={pw}
+                          onChange={(e) => setPw(e.target.value)}
+                          onBlur={() => setPwTouched(true)}
+                          placeholder="Create a password"
+                          className={`pl-9 pr-9 ${pwError ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                          aria-invalid={!!pwError}
+                          required
+                        />
                         <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                           {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                       </div>
+                      {pwError && <p className="text-xs text-destructive mt-1">{pwError}</p>}
                       <ul className="text-xs space-y-0.5 mt-1">
                         <li className={pw.length >= 8 ? "text-primary" : "text-muted-foreground"}>
                           {pw.length >= 8 ? "✓" : "•"} At least 8 characters
