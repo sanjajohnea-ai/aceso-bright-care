@@ -67,7 +67,14 @@ const AuthModal = () => {
   const [pwTouched, setPwTouched] = useState(false);
   const [pw2Touched, setPw2Touched] = useState(false);
 
-  const pwError = pwTouched ? validatePassword(pw) : null;
+  const validatePassword = (p: string): string | null => {
+    if (p.length < 8) return "Password must be at least 8 characters.";
+    if (!/[A-Z]/.test(p)) return "Password must contain at least one uppercase letter.";
+    if (!/[0-9]/.test(p)) return "Password must contain at least one number.";
+    return null;
+  };
+
+  const pwError = pwTouched && pw ? validatePassword(pw) : null;
   const pw2Error = pw2Touched && pw2 && pw !== pw2 ? "Passwords do not match." : null;
 
   useEffect(() => {
