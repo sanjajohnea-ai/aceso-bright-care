@@ -55,6 +55,12 @@ const AuthModal = () => {
   const [codeInput, setCodeInput] = useState("");
   const [emailVerified, setEmailVerified] = useState(false);
   const [sending, setSending] = useState(false);
+  const [codeExpiresAt, setCodeExpiresAt] = useState<number | null>(null);
+  const [now, setNow] = useState(Date.now());
+
+  const CODE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+  const secondsLeft = codeExpiresAt ? Math.max(0, Math.floor((codeExpiresAt - now) / 1000)) : 0;
+  const codeExpired = codeSent && !emailVerified && secondsLeft === 0;
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -81,7 +87,15 @@ const AuthModal = () => {
     setEmailVerified(false);
     setCodeInput("");
     setSentCode("");
+    setCodeExpiresAt(null);
   }, [email]);
+
+  // Ticking clock for countdown
+  useEffect(() => {
+    if (!codeSent || emailVerified) return;
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, [codeSent, emailVerified]);
 
   const close = () => {
     setOpen(false);
@@ -99,17 +113,33 @@ const AuthModal = () => {
       setSentCode(code);
       setCodeSent(true);
       setSending(false);
-      toast.success(`Verification code sent to ${email}`, { description: `For demo: your code is ${code}` });
+      setCodeInput("");
+      const expiry = Date.now() + CODE_TTL_MS;
+      setCodeExpiresAt(expiry);
+      setNow(Date.now());
+      toast.success(`Verification code sent to ${email}`, { description: `For demo: your code is ${code} (expires in 10 min)` });
     }, 700);
   };
 
   const verifyCode = () => {
+    if (codeExpired) {
+      setError("This verification code has expired. Please resend a new one.");
+      return;
+    }
     if (codeInput.trim() === sentCode && sentCode.length === 6) {
       setEmailVerified(true);
+      setCodeExpiresAt(null);
       toast.success("Email verified");
     } else {
       setError("Incorrect verification code. Please try again.");
     }
+  };
+
+  const validatePassword = (p: string): string | null => {
+    if (p.length < 8) return "Password must be at least 8 characters.";
+    if (!/[A-Z]/.test(p)) return "Password must contain at least one uppercase letter.";
+    if (!/[0-9]/.test(p)) return "Password must contain at least one number.";
+    return null;
   };
 
   const handleSignup = (e: React.FormEvent) => {
@@ -126,7 +156,8 @@ const AuthModal = () => {
       setError("Please verify your email address before continuing.");
       return;
     }
-    if (pw.length < 6) { setError("Password must be at least 6 characters."); return; }
+    const pwErr = validatePassword(pw);
+    if (pwErr) { setError(pwErr); return; }
     if (pw !== pw2) { setError("Passwords do not match."); return; }
     if (!agree) { setError("Please agree to the Terms and Privacy Policy."); return; }
 
@@ -137,6 +168,7 @@ const AuthModal = () => {
     setFname(""); setLname(""); setEmail(""); setDob(""); setPhone("");
     setPw(""); setPw2(""); setAgree(false); setError(null);
     setCodeSent(false); setEmailVerified(false); setCodeInput(""); setSentCode("");
+    setCodeExpiresAt(null);
   };
 
   return (
@@ -292,16 +324,23 @@ const AuthModal = () => {
                             disabled={sending || !email}
                             className="whitespace-nowrap"
                           >
-                            {sending ? "Sending..." : codeSent ? "Resend" : "Send code"}
+                            {sending ? "Sending..." : codeSent ? "Resend code" : "Send code"}
                           </Button>
                         )}
                       </div>
                       {codeSent && !emailVerified && (
                         <div className="mt-2 p-3 rounded-lg bg-primary/5 border border-primary/20 space-y-2">
-                          <p className="text-xs text-muted-foreground flex items-center gap-1.5">
-                            <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-                            Enter the 6-digit code sent to your email
-                          </p>
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+                              <ShieldCheck className="w-3.5 h-3.5 text-primary" />
+                              Enter the 6-digit code sent to your email
+                            </p>
+                            <span className={`text-xs font-mono font-semibold ${codeExpired ? "text-destructive" : "text-primary"}`}>
+                              {codeExpired
+                                ? "Expired"
+                                : `${Math.floor(secondsLeft / 60)}:${String(secondsLeft % 60).padStart(2, "0")}`}
+                            </span>
+                          </div>
                           <div className="flex gap-2">
                             <Input
                               value={codeInput}
@@ -309,17 +348,34 @@ const AuthModal = () => {
                               placeholder="000000"
                               inputMode="numeric"
                               maxLength={6}
+                              disabled={codeExpired}
                               className="flex-1 tracking-widest text-center font-mono"
                             />
-                            <Button type="button" onClick={verifyCode} disabled={codeInput.length !== 6}>
+                            <Button type="button" onClick={verifyCode} disabled={codeInput.length !== 6 || codeExpired}>
                               Verify
                             </Button>
+                          </div>
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-muted-foreground">
+                              Status:{" "}
+                              <span className={codeExpired ? "text-destructive font-medium" : "text-primary font-medium"}>
+                                {codeExpired ? "Code expired" : "Awaiting verification"}
+                              </span>
+                            </span>
+                            <button
+                              type="button"
+                              onClick={sendCode}
+                              disabled={sending}
+                              className="text-primary font-semibold hover:underline disabled:opacity-50"
+                            >
+                              Resend code
+                            </button>
                           </div>
                         </div>
                       )}
                       {emailVerified && (
                         <p className="text-xs text-primary font-medium flex items-center gap-1">
-                          <CheckCircle2 className="w-3.5 h-3.5" /> Email verified
+                          <CheckCircle2 className="w-3.5 h-3.5" /> Email verified successfully
                         </p>
                       )}
                     </div>
@@ -358,6 +414,17 @@ const AuthModal = () => {
                           {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                       </div>
+                      <ul className="text-xs space-y-0.5 mt-1">
+                        <li className={pw.length >= 8 ? "text-primary" : "text-muted-foreground"}>
+                          {pw.length >= 8 ? "✓" : "•"} At least 8 characters
+                        </li>
+                        <li className={/[A-Z]/.test(pw) ? "text-primary" : "text-muted-foreground"}>
+                          {/[A-Z]/.test(pw) ? "✓" : "•"} One uppercase letter
+                        </li>
+                        <li className={/[0-9]/.test(pw) ? "text-primary" : "text-muted-foreground"}>
+                          {/[0-9]/.test(pw) ? "✓" : "•"} One number
+                        </li>
+                      </ul>
                     </div>
 
                     <div className="space-y-1.5">
