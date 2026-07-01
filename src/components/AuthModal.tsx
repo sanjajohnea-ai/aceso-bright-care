@@ -55,6 +55,12 @@ const AuthModal = () => {
   const [codeInput, setCodeInput] = useState("");
   const [emailVerified, setEmailVerified] = useState(false);
   const [sending, setSending] = useState(false);
+  const [codeExpiresAt, setCodeExpiresAt] = useState<number | null>(null);
+  const [now, setNow] = useState(Date.now());
+
+  const CODE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+  const secondsLeft = codeExpiresAt ? Math.max(0, Math.floor((codeExpiresAt - now) / 1000)) : 0;
+  const codeExpired = codeSent && !emailVerified && secondsLeft === 0;
 
   const [submitted, setSubmitted] = useState(false);
 
