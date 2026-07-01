@@ -365,8 +365,13 @@ const AuthModal = () => {
                               disabled={codeExpired}
                               className="flex-1 tracking-widest text-center font-mono"
                             />
-                            <Button type="button" onClick={verifyCode} disabled={codeInput.length !== 6 || codeExpired}>
-                              Verify
+                            <Button
+                              type="button"
+                              onClick={verifyCode}
+                              disabled={codeInput.length !== 6 || codeExpired || verifying}
+                              className="min-w-[90px]"
+                            >
+                              {verifying ? "Verifying…" : "Verify"}
                             </Button>
                           </div>
                           <div className="flex items-center justify-between text-xs">
