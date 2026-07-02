@@ -101,22 +101,24 @@ const AuthModal = () => {
     setCodeSent(false);
     setEmailVerified(false);
     setCodeInput("");
-    setSentCode("");
     setCodeExpiresAt(null);
-    setFailedAttempts(0);
+    setEmailError(null);
   }, [email]);
 
-  // Ticking clock for countdown
+  // Ticking clock for countdown + resend cooldown
   useEffect(() => {
-    if (!codeSent || emailVerified) return;
-    const id = setInterval(() => setNow(Date.now()), 1000);
+    if (!codeSent && resendCooldown === 0) return;
+    const id = setInterval(() => {
+      setNow(Date.now());
+      setResendCooldown((s) => (s > 0 ? s - 1 : 0));
+    }, 1000);
     return () => clearInterval(id);
-  }, [codeSent, emailVerified]);
+  }, [codeSent, emailVerified, resendCooldown]);
 
   // Notify once when the code expires
   useEffect(() => {
     if (codeExpired) {
-      toast.error("Verification code expired", { description: "Please request a new code to continue." });
+      toast.error("Your verification code has expired.", { description: "Please request a new code to continue." });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [codeExpired]);
@@ -127,58 +129,87 @@ const AuthModal = () => {
   };
   const roleLabel = roles.find((r) => r.id === role)?.label || "Patient";
 
-  const sendCode = () => {
+  const sendCode = async () => {
     setError(null);
+    setEmailError(null);
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!valid) { setError("Please enter a valid email address before verifying."); return; }
+    if (!valid) { setEmailError("Please enter a valid email address."); return; }
+    if (resendCooldown > 0) return;
     setSending(true);
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
-    setTimeout(() => {
-      setSentCode(code);
-      setCodeSent(true);
-      setSending(false);
-      setCodeInput("");
-      setFailedAttempts(0);
-      const expiry = Date.now() + CODE_TTL_MS;
+    try {
+      const { data, error: fnErr } = await supabase.functions.invoke("send-verification-code", {
+        body: { email: email.trim() },
+      });
+      if (fnErr) {
+        // Try to parse the error body for structured messages
+        // deno-lint-ignore no-explicit-any
+        const ctx: any = (fnErr as any).context;
+        let payload: { error?: string; code?: string } | null = null;
+        try { payload = await ctx?.json?.(); } catch { /* ignore */ }
+        const msg = payload?.error || fnErr.message || "Could not send verification code.";
+        if (payload?.code === "email_exists") {
+          setEmailError("An account with this email already exists.");
+        } else {
+          setError(msg);
+        }
+        toast.error(msg);
+        return;
+      }
+      const expiryStr = (data as { expiresAt?: string })?.expiresAt;
+      const expiry = expiryStr ? new Date(expiryStr).getTime() : Date.now() + CODE_TTL_MS;
       setCodeExpiresAt(expiry);
+      setCodeSent(true);
+      setCodeInput("");
       setNow(Date.now());
-      toast.success(`Verification code sent to ${email}`, { description: `For demo: your code is ${code} (expires in 10 min)` });
-    }, 700);
+      setResendCooldown(60);
+      toast.success(`Verification code sent to ${email}`, { description: "Check your inbox for the 6-digit code." });
+    } catch (e) {
+      const msg = (e as Error).message || "Could not send verification code.";
+      setError(msg);
+      toast.error(msg);
+    } finally {
+      setSending(false);
+    }
   };
 
-  const verifyCode = () => {
+  const verifyCode = async () => {
     setError(null);
     if (codeExpired) {
-      toast.error("Verification code expired", { description: "Please request a new code." });
-      setError("This verification code has expired. Please click 'Resend code' to receive a new one.");
-      return;
-    }
-    if (attemptsExceeded) {
-      setError("Too many incorrect attempts. Please request a new verification code.");
+      setError("Your verification code has expired.");
       return;
     }
     setVerifying(true);
-    setTimeout(() => {
-      if (codeInput.trim() === sentCode && sentCode.length === 6) {
+    try {
+      const { data, error: fnErr } = await supabase.functions.invoke("verify-email-code", {
+        body: { email: email.trim(), code: codeInput.trim() },
+      });
+      if (fnErr) {
+        // deno-lint-ignore no-explicit-any
+        const ctx: any = (fnErr as any).context;
+        let payload: { error?: string; reason?: string } | null = null;
+        try { payload = await ctx?.json?.(); } catch { /* ignore */ }
+        const reason = payload?.reason;
+        if (reason === "expired") {
+          setError("Your verification code has expired.");
+          setCodeExpiresAt(Date.now() - 1000);
+        } else {
+          setError(payload?.error || "The verification code is incorrect.");
+        }
+        toast.error(payload?.error || "The verification code is incorrect.");
+        return;
+      }
+      if ((data as { ok?: boolean })?.ok) {
         setEmailVerified(true);
         setCodeExpiresAt(null);
-        setFailedAttempts(0);
         toast.success("Email verified successfully");
-      } else {
-        const next = failedAttempts + 1;
-        setFailedAttempts(next);
-        if (next >= MAX_ATTEMPTS) {
-          setError("Too many incorrect attempts. Please request a new verification code.");
-          toast.error("Too many incorrect attempts", { description: "Please request a new verification code." });
-          setSentCode(""); // invalidate current code so a new one must be requested
-        } else {
-          const remaining = MAX_ATTEMPTS - next;
-          setError(`Incorrect verification code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
-          toast.error("Incorrect code");
-        }
       }
+    } catch (e) {
+      const msg = (e as Error).message || "Verification failed.";
+      setError(msg);
+      toast.error(msg);
+    } finally {
       setVerifying(false);
-    }, 500);
+    }
   };
 
 
@@ -206,10 +237,10 @@ const AuthModal = () => {
 
   const resetAll = () => {
     setFname(""); setLname(""); setEmail(""); setDob(""); setPhone("");
-    setPw(""); setPw2(""); setAgree(false); setError(null);
-    setCodeSent(false); setEmailVerified(false); setCodeInput(""); setSentCode("");
+    setPw(""); setPw2(""); setAgree(false); setError(null); setEmailError(null);
+    setCodeSent(false); setEmailVerified(false); setCodeInput("");
     setCodeExpiresAt(null);
-    setFailedAttempts(0);
+    setResendCooldown(0);
   };
 
   const dobAge = calcAge(dob);
