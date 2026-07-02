@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 export type AuthMode = "signin" | "signup";
 
@@ -48,15 +49,16 @@ const AuthModal = () => {
   const [pw2, setPw2] = useState("");
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   // Email verification (on-page)
   const [codeSent, setCodeSent] = useState(false);
-  const [sentCode, setSentCode] = useState<string>("");
   const [codeInput, setCodeInput] = useState("");
   const [emailVerified, setEmailVerified] = useState(false);
   const [sending, setSending] = useState(false);
   const [codeExpiresAt, setCodeExpiresAt] = useState<number | null>(null);
   const [now, setNow] = useState(Date.now());
+  const [resendCooldown, setResendCooldown] = useState(0);
 
   const CODE_TTL_MS = 10 * 60 * 1000; // 10 minutes
   const secondsLeft = codeExpiresAt ? Math.max(0, Math.floor((codeExpiresAt - now) / 1000)) : 0;
@@ -66,9 +68,6 @@ const AuthModal = () => {
   const [verifying, setVerifying] = useState(false);
   const [pwTouched, setPwTouched] = useState(false);
   const [pw2Touched, setPw2Touched] = useState(false);
-  const [failedAttempts, setFailedAttempts] = useState(0);
-  const MAX_ATTEMPTS = 5;
-  const attemptsExceeded = failedAttempts >= MAX_ATTEMPTS;
 
   const validatePassword = (p: string): string | null => {
     if (p.length < 8) return "Password must be at least 8 characters.";
@@ -102,22 +101,24 @@ const AuthModal = () => {
     setCodeSent(false);
     setEmailVerified(false);
     setCodeInput("");
-    setSentCode("");
     setCodeExpiresAt(null);
-    setFailedAttempts(0);
+    setEmailError(null);
   }, [email]);
 
-  // Ticking clock for countdown
+  // Ticking clock for countdown + resend cooldown
   useEffect(() => {
-    if (!codeSent || emailVerified) return;
-    const id = setInterval(() => setNow(Date.now()), 1000);
+    if (!codeSent && resendCooldown === 0) return;
+    const id = setInterval(() => {
+      setNow(Date.now());
+      setResendCooldown((s) => (s > 0 ? s - 1 : 0));
+    }, 1000);
     return () => clearInterval(id);
-  }, [codeSent, emailVerified]);
+  }, [codeSent, emailVerified, resendCooldown]);
 
   // Notify once when the code expires
   useEffect(() => {
     if (codeExpired) {
-      toast.error("Verification code expired", { description: "Please request a new code to continue." });
+      toast.error("Your verification code has expired.", { description: "Please request a new code to continue." });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [codeExpired]);
@@ -128,58 +129,87 @@ const AuthModal = () => {
   };
   const roleLabel = roles.find((r) => r.id === role)?.label || "Patient";
 
-  const sendCode = () => {
+  const sendCode = async () => {
     setError(null);
+    setEmailError(null);
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!valid) { setError("Please enter a valid email address before verifying."); return; }
+    if (!valid) { setEmailError("Please enter a valid email address."); return; }
+    if (resendCooldown > 0) return;
     setSending(true);
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
-    setTimeout(() => {
-      setSentCode(code);
-      setCodeSent(true);
-      setSending(false);
-      setCodeInput("");
-      setFailedAttempts(0);
-      const expiry = Date.now() + CODE_TTL_MS;
+    try {
+      const { data, error: fnErr } = await supabase.functions.invoke("send-verification-code", {
+        body: { email: email.trim() },
+      });
+      if (fnErr) {
+        // Try to parse the error body for structured messages
+        // deno-lint-ignore no-explicit-any
+        const ctx: any = (fnErr as any).context;
+        let payload: { error?: string; code?: string } | null = null;
+        try { payload = await ctx?.json?.(); } catch { /* ignore */ }
+        const msg = payload?.error || fnErr.message || "Could not send verification code.";
+        if (payload?.code === "email_exists") {
+          setEmailError("An account with this email already exists.");
+        } else {
+          setError(msg);
+        }
+        toast.error(msg);
+        return;
+      }
+      const expiryStr = (data as { expiresAt?: string })?.expiresAt;
+      const expiry = expiryStr ? new Date(expiryStr).getTime() : Date.now() + CODE_TTL_MS;
       setCodeExpiresAt(expiry);
+      setCodeSent(true);
+      setCodeInput("");
       setNow(Date.now());
-      toast.success(`Verification code sent to ${email}`, { description: `For demo: your code is ${code} (expires in 10 min)` });
-    }, 700);
+      setResendCooldown(60);
+      toast.success(`Verification code sent to ${email}`, { description: "Check your inbox for the 6-digit code." });
+    } catch (e) {
+      const msg = (e as Error).message || "Could not send verification code.";
+      setError(msg);
+      toast.error(msg);
+    } finally {
+      setSending(false);
+    }
   };
 
-  const verifyCode = () => {
+  const verifyCode = async () => {
     setError(null);
     if (codeExpired) {
-      toast.error("Verification code expired", { description: "Please request a new code." });
-      setError("This verification code has expired. Please click 'Resend code' to receive a new one.");
-      return;
-    }
-    if (attemptsExceeded) {
-      setError("Too many incorrect attempts. Please request a new verification code.");
+      setError("Your verification code has expired.");
       return;
     }
     setVerifying(true);
-    setTimeout(() => {
-      if (codeInput.trim() === sentCode && sentCode.length === 6) {
+    try {
+      const { data, error: fnErr } = await supabase.functions.invoke("verify-email-code", {
+        body: { email: email.trim(), code: codeInput.trim() },
+      });
+      if (fnErr) {
+        // deno-lint-ignore no-explicit-any
+        const ctx: any = (fnErr as any).context;
+        let payload: { error?: string; reason?: string } | null = null;
+        try { payload = await ctx?.json?.(); } catch { /* ignore */ }
+        const reason = payload?.reason;
+        if (reason === "expired") {
+          setError("Your verification code has expired.");
+          setCodeExpiresAt(Date.now() - 1000);
+        } else {
+          setError(payload?.error || "The verification code is incorrect.");
+        }
+        toast.error(payload?.error || "The verification code is incorrect.");
+        return;
+      }
+      if ((data as { ok?: boolean })?.ok) {
         setEmailVerified(true);
         setCodeExpiresAt(null);
-        setFailedAttempts(0);
         toast.success("Email verified successfully");
-      } else {
-        const next = failedAttempts + 1;
-        setFailedAttempts(next);
-        if (next >= MAX_ATTEMPTS) {
-          setError("Too many incorrect attempts. Please request a new verification code.");
-          toast.error("Too many incorrect attempts", { description: "Please request a new verification code." });
-          setSentCode(""); // invalidate current code so a new one must be requested
-        } else {
-          const remaining = MAX_ATTEMPTS - next;
-          setError(`Incorrect verification code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
-          toast.error("Incorrect code");
-        }
       }
+    } catch (e) {
+      const msg = (e as Error).message || "Verification failed.";
+      setError(msg);
+      toast.error(msg);
+    } finally {
       setVerifying(false);
-    }, 500);
+    }
   };
 
 
@@ -207,10 +237,10 @@ const AuthModal = () => {
 
   const resetAll = () => {
     setFname(""); setLname(""); setEmail(""); setDob(""); setPhone("");
-    setPw(""); setPw2(""); setAgree(false); setError(null);
-    setCodeSent(false); setEmailVerified(false); setCodeInput(""); setSentCode("");
+    setPw(""); setPw2(""); setAgree(false); setError(null); setEmailError(null);
+    setCodeSent(false); setEmailVerified(false); setCodeInput("");
     setCodeExpiresAt(null);
-    setFailedAttempts(0);
+    setResendCooldown(0);
   };
 
   const dobAge = calcAge(dob);
@@ -355,7 +385,8 @@ const AuthModal = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
-                            className="pl-9 pr-9"
+                            className={`pl-9 pr-9 ${emailError ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                            aria-invalid={!!emailError}
                             disabled={emailVerified}
                             required
                           />
@@ -368,13 +399,22 @@ const AuthModal = () => {
                             type="button"
                             variant="outline"
                             onClick={sendCode}
-                            disabled={sending || !email}
+                            disabled={sending || !email || (codeSent && resendCooldown > 0 && !codeExpired)}
                             className="whitespace-nowrap"
                           >
-                            {sending ? "Sending..." : codeSent ? "Resend code" : "Send code"}
+                            {sending
+                              ? "Sending..."
+                              : codeSent
+                                ? resendCooldown > 0
+                                  ? `Resend (${resendCooldown}s)`
+                                  : "Resend code"
+                                : "Verify Email"}
                           </Button>
                         )}
                       </div>
+                      {emailError && (
+                        <p className="text-xs text-destructive mt-1">{emailError}</p>
+                      )}
                       {codeSent && !emailVerified && (
                         <div className="mt-2 p-3 rounded-lg bg-primary/5 border border-primary/20 space-y-2">
                           <div className="flex items-center justify-between gap-2">
@@ -395,24 +435,19 @@ const AuthModal = () => {
                               placeholder="000000"
                               inputMode="numeric"
                               maxLength={6}
-                              disabled={codeExpired || attemptsExceeded}
+                              disabled={codeExpired}
                               className="flex-1 tracking-widest text-center font-mono"
                             />
                             <Button
                               type="button"
                               onClick={verifyCode}
-                              disabled={codeInput.length !== 6 || codeExpired || verifying || attemptsExceeded}
+                              disabled={codeInput.length !== 6 || codeExpired || verifying}
                               className="min-w-[90px]"
                             >
                               {verifying ? "Verifying…" : "Verify"}
                             </Button>
                           </div>
-                          {attemptsExceeded && (
-                            <div className="p-2 rounded-md bg-destructive/10 border border-destructive/30 text-xs text-destructive">
-                              Too many incorrect attempts. Please request a new verification code.
-                            </div>
-                          )}
-                          {codeExpired && !attemptsExceeded && (
+                          {codeExpired && (
                             <div className="p-2 rounded-md bg-destructive/10 border border-destructive/30 text-xs text-destructive">
                               Your verification code has expired. Please request a new one.
                             </div>
@@ -420,17 +455,23 @@ const AuthModal = () => {
                           <div className="flex items-center justify-between text-xs">
                             <span className="text-muted-foreground">
                               Status:{" "}
-                              <span className={(codeExpired || attemptsExceeded) ? "text-destructive font-medium" : "text-primary font-medium"}>
-                                {attemptsExceeded ? "Locked — request new code" : codeExpired ? "Code expired" : `Awaiting verification${failedAttempts > 0 ? ` (${MAX_ATTEMPTS - failedAttempts} attempts left)` : ""}`}
+                              <span className={codeExpired ? "text-destructive font-medium" : "text-primary font-medium"}>
+                                {codeExpired ? "Code expired" : "Awaiting verification"}
                               </span>
                             </span>
                             <button
                               type="button"
                               onClick={sendCode}
-                              disabled={sending}
-                              className={`font-semibold hover:underline disabled:opacity-50 ${(codeExpired || attemptsExceeded) ? "text-destructive" : "text-primary"}`}
+                              disabled={sending || resendCooldown > 0}
+                              className={`font-semibold hover:underline disabled:opacity-50 ${codeExpired ? "text-destructive" : "text-primary"}`}
                             >
-                              {sending ? "Sending…" : (codeExpired || attemptsExceeded) ? "Request new code" : "Resend code"}
+                              {sending
+                                ? "Sending…"
+                                : resendCooldown > 0
+                                  ? `Resend code (${resendCooldown}s)`
+                                  : codeExpired
+                                    ? "Request new code"
+                                    : "Resend code"}
                             </button>
                           </div>
                         </div>
