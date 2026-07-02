@@ -415,7 +415,6 @@ const AuthModal = () => {
                       {emailError && (
                         <p className="text-xs text-destructive mt-1">{emailError}</p>
                       )}
-                      </div>
                       {codeSent && !emailVerified && (
                         <div className="mt-2 p-3 rounded-lg bg-primary/5 border border-primary/20 space-y-2">
                           <div className="flex items-center justify-between gap-2">
