@@ -385,7 +385,8 @@ const AuthModal = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
-                            className="pl-9 pr-9"
+                            className={`pl-9 pr-9 ${emailError ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                            aria-invalid={!!emailError}
                             disabled={emailVerified}
                             required
                           />
@@ -398,12 +399,22 @@ const AuthModal = () => {
                             type="button"
                             variant="outline"
                             onClick={sendCode}
-                            disabled={sending || !email}
+                            disabled={sending || !email || (codeSent && resendCooldown > 0 && !codeExpired)}
                             className="whitespace-nowrap"
                           >
-                            {sending ? "Sending..." : codeSent ? "Resend code" : "Send code"}
+                            {sending
+                              ? "Sending..."
+                              : codeSent
+                                ? resendCooldown > 0
+                                  ? `Resend (${resendCooldown}s)`
+                                  : "Resend code"
+                                : "Verify Email"}
                           </Button>
                         )}
+                      </div>
+                      {emailError && (
+                        <p className="text-xs text-destructive mt-1">{emailError}</p>
+                      )}
                       </div>
                       {codeSent && !emailVerified && (
                         <div className="mt-2 p-3 rounded-lg bg-primary/5 border border-primary/20 space-y-2">
