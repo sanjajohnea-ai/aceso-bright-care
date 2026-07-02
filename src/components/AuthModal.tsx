@@ -428,9 +428,9 @@ const AuthModal = () => {
                               type="button"
                               onClick={sendCode}
                               disabled={sending}
-                              className={`font-semibold hover:underline disabled:opacity-50 ${codeExpired ? "text-destructive" : "text-primary"}`}
+                              className={`font-semibold hover:underline disabled:opacity-50 ${(codeExpired || attemptsExceeded) ? "text-destructive" : "text-primary"}`}
                             >
-                              {sending ? "Sending…" : codeExpired ? "Request new code" : "Resend code"}
+                              {sending ? "Sending…" : (codeExpired || attemptsExceeded) ? "Request new code" : "Resend code"}
                             </button>
                           </div>
                         </div>
