@@ -425,24 +425,19 @@ const AuthModal = () => {
                               placeholder="000000"
                               inputMode="numeric"
                               maxLength={6}
-                              disabled={codeExpired || attemptsExceeded}
+                              disabled={codeExpired}
                               className="flex-1 tracking-widest text-center font-mono"
                             />
                             <Button
                               type="button"
                               onClick={verifyCode}
-                              disabled={codeInput.length !== 6 || codeExpired || verifying || attemptsExceeded}
+                              disabled={codeInput.length !== 6 || codeExpired || verifying}
                               className="min-w-[90px]"
                             >
                               {verifying ? "Verifying…" : "Verify"}
                             </Button>
                           </div>
-                          {attemptsExceeded && (
-                            <div className="p-2 rounded-md bg-destructive/10 border border-destructive/30 text-xs text-destructive">
-                              Too many incorrect attempts. Please request a new verification code.
-                            </div>
-                          )}
-                          {codeExpired && !attemptsExceeded && (
+                          {codeExpired && (
                             <div className="p-2 rounded-md bg-destructive/10 border border-destructive/30 text-xs text-destructive">
                               Your verification code has expired. Please request a new one.
                             </div>
@@ -450,17 +445,23 @@ const AuthModal = () => {
                           <div className="flex items-center justify-between text-xs">
                             <span className="text-muted-foreground">
                               Status:{" "}
-                              <span className={(codeExpired || attemptsExceeded) ? "text-destructive font-medium" : "text-primary font-medium"}>
-                                {attemptsExceeded ? "Locked — request new code" : codeExpired ? "Code expired" : `Awaiting verification${failedAttempts > 0 ? ` (${MAX_ATTEMPTS - failedAttempts} attempts left)` : ""}`}
+                              <span className={codeExpired ? "text-destructive font-medium" : "text-primary font-medium"}>
+                                {codeExpired ? "Code expired" : "Awaiting verification"}
                               </span>
                             </span>
                             <button
                               type="button"
                               onClick={sendCode}
-                              disabled={sending}
-                              className={`font-semibold hover:underline disabled:opacity-50 ${(codeExpired || attemptsExceeded) ? "text-destructive" : "text-primary"}`}
+                              disabled={sending || resendCooldown > 0}
+                              className={`font-semibold hover:underline disabled:opacity-50 ${codeExpired ? "text-destructive" : "text-primary"}`}
                             >
-                              {sending ? "Sending…" : (codeExpired || attemptsExceeded) ? "Request new code" : "Resend code"}
+                              {sending
+                                ? "Sending…"
+                                : resendCooldown > 0
+                                  ? `Resend code (${resendCooldown}s)`
+                                  : codeExpired
+                                    ? "Request new code"
+                                    : "Resend code"}
                             </button>
                           </div>
                         </div>
