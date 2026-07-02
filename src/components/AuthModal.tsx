@@ -66,6 +66,9 @@ const AuthModal = () => {
   const [verifying, setVerifying] = useState(false);
   const [pwTouched, setPwTouched] = useState(false);
   const [pw2Touched, setPw2Touched] = useState(false);
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const MAX_ATTEMPTS = 5;
+  const attemptsExceeded = failedAttempts >= MAX_ATTEMPTS;
 
   const validatePassword = (p: string): string | null => {
     if (p.length < 8) return "Password must be at least 8 characters.";
