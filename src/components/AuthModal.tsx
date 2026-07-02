@@ -530,8 +530,20 @@ const AuthModal = () => {
                       </span>
                     </label>
 
-                    <Button type="submit" variant="hero" size="lg" className="w-full rounded-xl">
-                      Sign Up as {roleLabel}
+                    {!emailVerified && (
+                      <p className="text-xs text-muted-foreground text-center">
+                        Please verify your email address before creating your account.
+                      </p>
+                    )}
+                    <Button
+                      type="submit"
+                      variant="hero"
+                      size="lg"
+                      className="w-full rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={!canSubmit}
+                      aria-disabled={!canSubmit}
+                    >
+                      Create Account
                     </Button>
                   </form>
                 ) : (
