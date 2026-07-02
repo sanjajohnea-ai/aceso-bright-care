@@ -49,15 +49,16 @@ const AuthModal = () => {
   const [pw2, setPw2] = useState("");
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   // Email verification (on-page)
   const [codeSent, setCodeSent] = useState(false);
-  const [sentCode, setSentCode] = useState<string>("");
   const [codeInput, setCodeInput] = useState("");
   const [emailVerified, setEmailVerified] = useState(false);
   const [sending, setSending] = useState(false);
   const [codeExpiresAt, setCodeExpiresAt] = useState<number | null>(null);
   const [now, setNow] = useState(Date.now());
+  const [resendCooldown, setResendCooldown] = useState(0);
 
   const CODE_TTL_MS = 10 * 60 * 1000; // 10 minutes
   const secondsLeft = codeExpiresAt ? Math.max(0, Math.floor((codeExpiresAt - now) / 1000)) : 0;
@@ -67,9 +68,6 @@ const AuthModal = () => {
   const [verifying, setVerifying] = useState(false);
   const [pwTouched, setPwTouched] = useState(false);
   const [pw2Touched, setPw2Touched] = useState(false);
-  const [failedAttempts, setFailedAttempts] = useState(0);
-  const MAX_ATTEMPTS = 5;
-  const attemptsExceeded = failedAttempts >= MAX_ATTEMPTS;
 
   const validatePassword = (p: string): string | null => {
     if (p.length < 8) return "Password must be at least 8 characters.";
