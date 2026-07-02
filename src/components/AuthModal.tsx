@@ -187,14 +187,14 @@ const AuthModal = () => {
     e.preventDefault();
     setError(null);
 
+    if (!emailVerified) {
+      setError("Please verify your email address before creating your account.");
+      return;
+    }
     if (!dob) { setError("Please enter your date of birth."); return; }
     const age = calcAge(dob);
     if (age < 18) {
       setError("We're sorry — you must be at least 18 years old to register for an Aceso Health account.");
-      return;
-    }
-    if (!emailVerified) {
-      setError("Please verify your email address before continuing.");
       return;
     }
     const pwErr = validatePassword(pw);
@@ -210,7 +210,13 @@ const AuthModal = () => {
     setPw(""); setPw2(""); setAgree(false); setError(null);
     setCodeSent(false); setEmailVerified(false); setCodeInput(""); setSentCode("");
     setCodeExpiresAt(null);
+    setFailedAttempts(0);
   };
+
+  const dobAge = calcAge(dob);
+  const allFieldsFilled = !!fname.trim() && !!email.trim() && !!dob && !!phone.trim() && !!pw && !!pw2;
+  const passwordOk = !validatePassword(pw) && pw === pw2;
+  const canSubmit = emailVerified && allFieldsFilled && passwordOk && agree && dobAge >= 18;
 
   return (
     <AnimatePresence>
