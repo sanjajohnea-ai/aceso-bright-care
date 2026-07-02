@@ -139,6 +139,7 @@ const AuthModal = () => {
       setCodeSent(true);
       setSending(false);
       setCodeInput("");
+      setFailedAttempts(0);
       const expiry = Date.now() + CODE_TTL_MS;
       setCodeExpiresAt(expiry);
       setNow(Date.now());
@@ -153,15 +154,29 @@ const AuthModal = () => {
       setError("This verification code has expired. Please click 'Resend code' to receive a new one.");
       return;
     }
+    if (attemptsExceeded) {
+      setError("Too many incorrect attempts. Please request a new verification code.");
+      return;
+    }
     setVerifying(true);
     setTimeout(() => {
       if (codeInput.trim() === sentCode && sentCode.length === 6) {
         setEmailVerified(true);
         setCodeExpiresAt(null);
+        setFailedAttempts(0);
         toast.success("Email verified successfully");
       } else {
-        setError("Incorrect verification code. Please check and try again.");
-        toast.error("Incorrect code");
+        const next = failedAttempts + 1;
+        setFailedAttempts(next);
+        if (next >= MAX_ATTEMPTS) {
+          setError("Too many incorrect attempts. Please request a new verification code.");
+          toast.error("Too many incorrect attempts", { description: "Please request a new verification code." });
+          setSentCode(""); // invalidate current code so a new one must be requested
+        } else {
+          const remaining = MAX_ATTEMPTS - next;
+          setError(`Incorrect verification code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
+          toast.error("Incorrect code");
+        }
       }
       setVerifying(false);
     }, 500);
