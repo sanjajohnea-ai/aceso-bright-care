@@ -104,6 +104,7 @@ const AuthModal = () => {
     setCodeInput("");
     setSentCode("");
     setCodeExpiresAt(null);
+    setFailedAttempts(0);
   }, [email]);
 
   // Ticking clock for countdown
