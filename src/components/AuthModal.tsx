@@ -66,6 +66,9 @@ const AuthModal = () => {
   const [verifying, setVerifying] = useState(false);
   const [pwTouched, setPwTouched] = useState(false);
   const [pw2Touched, setPw2Touched] = useState(false);
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const MAX_ATTEMPTS = 5;
+  const attemptsExceeded = failedAttempts >= MAX_ATTEMPTS;
 
   const validatePassword = (p: string): string | null => {
     if (p.length < 8) return "Password must be at least 8 characters.";
@@ -101,6 +104,7 @@ const AuthModal = () => {
     setCodeInput("");
     setSentCode("");
     setCodeExpiresAt(null);
+    setFailedAttempts(0);
   }, [email]);
 
   // Ticking clock for countdown
@@ -135,6 +139,7 @@ const AuthModal = () => {
       setCodeSent(true);
       setSending(false);
       setCodeInput("");
+      setFailedAttempts(0);
       const expiry = Date.now() + CODE_TTL_MS;
       setCodeExpiresAt(expiry);
       setNow(Date.now());
@@ -149,15 +154,29 @@ const AuthModal = () => {
       setError("This verification code has expired. Please click 'Resend code' to receive a new one.");
       return;
     }
+    if (attemptsExceeded) {
+      setError("Too many incorrect attempts. Please request a new verification code.");
+      return;
+    }
     setVerifying(true);
     setTimeout(() => {
       if (codeInput.trim() === sentCode && sentCode.length === 6) {
         setEmailVerified(true);
         setCodeExpiresAt(null);
+        setFailedAttempts(0);
         toast.success("Email verified successfully");
       } else {
-        setError("Incorrect verification code. Please check and try again.");
-        toast.error("Incorrect code");
+        const next = failedAttempts + 1;
+        setFailedAttempts(next);
+        if (next >= MAX_ATTEMPTS) {
+          setError("Too many incorrect attempts. Please request a new verification code.");
+          toast.error("Too many incorrect attempts", { description: "Please request a new verification code." });
+          setSentCode(""); // invalidate current code so a new one must be requested
+        } else {
+          const remaining = MAX_ATTEMPTS - next;
+          setError(`Incorrect verification code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
+          toast.error("Incorrect code");
+        }
       }
       setVerifying(false);
     }, 500);
@@ -168,14 +187,14 @@ const AuthModal = () => {
     e.preventDefault();
     setError(null);
 
+    if (!emailVerified) {
+      setError("Please verify your email address before creating your account.");
+      return;
+    }
     if (!dob) { setError("Please enter your date of birth."); return; }
     const age = calcAge(dob);
     if (age < 18) {
       setError("We're sorry — you must be at least 18 years old to register for an Aceso Health account.");
-      return;
-    }
-    if (!emailVerified) {
-      setError("Please verify your email address before continuing.");
       return;
     }
     const pwErr = validatePassword(pw);
@@ -191,7 +210,13 @@ const AuthModal = () => {
     setPw(""); setPw2(""); setAgree(false); setError(null);
     setCodeSent(false); setEmailVerified(false); setCodeInput(""); setSentCode("");
     setCodeExpiresAt(null);
+    setFailedAttempts(0);
   };
+
+  const dobAge = calcAge(dob);
+  const allFieldsFilled = !!fname.trim() && !!email.trim() && !!dob && !!phone.trim() && !!pw && !!pw2;
+  const passwordOk = !validatePassword(pw) && pw === pw2;
+  const canSubmit = emailVerified && allFieldsFilled && passwordOk && agree && dobAge >= 18;
 
   return (
     <AnimatePresence>
@@ -370,19 +395,24 @@ const AuthModal = () => {
                               placeholder="000000"
                               inputMode="numeric"
                               maxLength={6}
-                              disabled={codeExpired}
+                              disabled={codeExpired || attemptsExceeded}
                               className="flex-1 tracking-widest text-center font-mono"
                             />
                             <Button
                               type="button"
                               onClick={verifyCode}
-                              disabled={codeInput.length !== 6 || codeExpired || verifying}
+                              disabled={codeInput.length !== 6 || codeExpired || verifying || attemptsExceeded}
                               className="min-w-[90px]"
                             >
                               {verifying ? "Verifying…" : "Verify"}
                             </Button>
                           </div>
-                          {codeExpired && (
+                          {attemptsExceeded && (
+                            <div className="p-2 rounded-md bg-destructive/10 border border-destructive/30 text-xs text-destructive">
+                              Too many incorrect attempts. Please request a new verification code.
+                            </div>
+                          )}
+                          {codeExpired && !attemptsExceeded && (
                             <div className="p-2 rounded-md bg-destructive/10 border border-destructive/30 text-xs text-destructive">
                               Your verification code has expired. Please request a new one.
                             </div>
@@ -390,17 +420,17 @@ const AuthModal = () => {
                           <div className="flex items-center justify-between text-xs">
                             <span className="text-muted-foreground">
                               Status:{" "}
-                              <span className={codeExpired ? "text-destructive font-medium" : "text-primary font-medium"}>
-                                {codeExpired ? "Code expired" : "Awaiting verification"}
+                              <span className={(codeExpired || attemptsExceeded) ? "text-destructive font-medium" : "text-primary font-medium"}>
+                                {attemptsExceeded ? "Locked — request new code" : codeExpired ? "Code expired" : `Awaiting verification${failedAttempts > 0 ? ` (${MAX_ATTEMPTS - failedAttempts} attempts left)` : ""}`}
                               </span>
                             </span>
                             <button
                               type="button"
                               onClick={sendCode}
                               disabled={sending}
-                              className={`font-semibold hover:underline disabled:opacity-50 ${codeExpired ? "text-destructive" : "text-primary"}`}
+                              className={`font-semibold hover:underline disabled:opacity-50 ${(codeExpired || attemptsExceeded) ? "text-destructive" : "text-primary"}`}
                             >
-                              {sending ? "Sending…" : codeExpired ? "Request new code" : "Resend code"}
+                              {sending ? "Sending…" : (codeExpired || attemptsExceeded) ? "Request new code" : "Resend code"}
                             </button>
                           </div>
                         </div>
@@ -500,8 +530,20 @@ const AuthModal = () => {
                       </span>
                     </label>
 
-                    <Button type="submit" variant="hero" size="lg" className="w-full rounded-xl">
-                      Sign Up as {roleLabel}
+                    {!emailVerified && (
+                      <p className="text-xs text-muted-foreground text-center">
+                        Please verify your email address before creating your account.
+                      </p>
+                    )}
+                    <Button
+                      type="submit"
+                      variant="hero"
+                      size="lg"
+                      className="w-full rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={!canSubmit}
+                      aria-disabled={!canSubmit}
+                    >
+                      Create Account
                     </Button>
                   </form>
                 ) : (
